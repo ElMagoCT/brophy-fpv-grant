@@ -169,7 +169,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'Written by students, maintained by students.', r: 'A new member has something to do on day one, with or without a free seat.' }
   ]);
   shot(s, 'web-groundschool.jpg', 5.4, 1.45, 4.1, 2.1, '…/brophy-uav-dashboard/groundschool/');
-  placeholder(s, 5.4, 3.95, 4.1, 1.1, 'A Flight School lesson open on the kiosk', 'kiosk/kiosk-lesson.png');
+  if (img('kiosk-lesson.png')) shot(s, 'kiosk-lesson.png', 5.4, 3.75, 4.1, 1.05, 'kiosk · a lesson open'); else placeholder(s, 5.4, 3.95, 4.1, 1.1, 'A Flight School lesson open on the kiosk', 'kiosk/kiosk-lesson.png');
 }
 /* ================================================================ 8 */
 {
@@ -182,7 +182,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'Every gate is placed', r: 'where the next mistake starts to cost real money or real safety.' }
   ]);
   shot(s, '03-map-tier0.jpg', 5.4, 1.45, 2.3, 3.4, 'poster · Tier 0 trail map');
-  placeholder(s, 7.9, 1.45, 1.6, 3.66, 'A pilot mid-flight in Liftoff', 'kiosk/kiosk-liftoff.jpg');
+  if (img('kiosk-liftoff.jpg')) shot(s, 'kiosk-liftoff.jpg', 7.9, 1.45, 1.6, 3.4, 'kiosk · Liftoff'); else placeholder(s, 7.9, 1.45, 1.6, 3.66, 'A pilot mid-flight in Liftoff', 'kiosk/kiosk-liftoff.jpg');
 }
 /* ================================================================ 9 */
 {
@@ -209,7 +209,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'A record:', r: 'a logged, visible badge board that says exactly what they can do.' }
   ]);
   placeholder(s, 5.4, 1.45, 4.1, 2.2, 'A member flying on the sim in goggles', 'photos/pilot-flying.jpg');
-  placeholder(s, 5.4, 3.85, 4.1, 1.2, 'A pilot’s FPV Journey badge map on the kiosk', 'kiosk/kiosk-journey.png');
+  if (img('kiosk-journey.png')) shot(s, 'kiosk-journey.png', 5.4, 3.75, 4.1, 1.05, 'kiosk · a pilot’s badge map'); else placeholder(s, 5.4, 3.85, 4.1, 1.2, 'A pilot’s FPV Journey badge map on the kiosk', 'kiosk/kiosk-journey.png');
 }
 /* ================================================================ 11 */
 {

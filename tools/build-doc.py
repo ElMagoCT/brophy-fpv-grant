@@ -8,6 +8,7 @@ script = open('SCRIPT.md', encoding='utf-8').read()
 notes = [p[p.index('\n')+1:].split('\n---')[0].strip() for p in re.split(r'^## ', script, flags=re.M)[1:]]
 def strip(t):
     t = re.sub(r'<span class="why">(.*?)</span>', r' — why: \1', t, flags=re.S)
+    t = re.sub(r'<br\s*/?>', ' ', t)
     t = re.sub(r'<[^>]+>', '', t); return html.unescape(re.sub(r'\s+', ' ', t)).strip()
 sections = re.findall(r'<section class="scene"([^>]*)>(.*?)</section>', src, flags=re.S)
 out = ['<html><body style="font-family:Arial">']
