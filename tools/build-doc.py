@@ -25,7 +25,8 @@ for i, (attrs, body) in enumerate(sections):
     for ssub in sub: out.append(f'<p>{html.escape(strip(ssub))}</p>')
     st = re.search(r'<span class="stamp">(.*?)</span>', body)
     if st: out.append(f'<p><b>Stamp:</b> {html.escape(strip(st.group(1)))}</p>')
-    lis = re.findall(r'<li[^>]*>(.*?)</li>', body, flags=re.S)
+    body_nocards = re.sub(r'<div class="(?:card|g)(?: frag)?"[^>]*>.*?</div>\s*(?=<div class="(?:card|g)|</div>)', '', body, flags=re.S)
+    lis = re.findall(r'<li[^>]*>(.*?)</li>', body_nocards, flags=re.S)
     if lis: out.append('<ul>' + ''.join(f'<li>{html.escape(strip(l))}</li>' for l in lis) + '</ul>')
     for cls in ('card', 'g', 'stat'):
         for c in re.findall(rf'<div class="{cls}(?: frag)?"[^>]*>(.*?)</div>\s*(?=<div class="{cls}|</div>)', body, flags=re.S):
@@ -40,6 +41,8 @@ for i, (attrs, body) in enumerate(sections):
         srcm = re.search(r'src="([^"]+)"', img); ph = re.search(r'data-photo="([^"]+)"', img); alt = re.search(r'alt="([^"]*)"', img); lab = re.search(r'data-label="([^"]*)"', img)
         if srcm and not srcm.group(1).startswith('assets/qr'):
             out.append(f'<p><img src="{BASE}{srcm.group(1)}" width="420"><br><i>{html.escape(alt.group(1) if alt else "")}</i></p>')
+        elif ph and __import__('os').path.exists(ph.group(1)):
+            out.append(f'<p><img src="{BASE}{ph.group(1)}" width="420"><br><i>{html.escape(lab.group(1) if lab else "")}</i></p>')
         elif ph:
             out.append(f'<p style="border:1px dashed #888;padding:6px"><i>[Photo coming from the kiosk: {html.escape(lab.group(1) if lab else "")} — {html.escape(ph.group(1))}]</i></p>')
     qrs = re.findall(r'<div class="qr[^"]*">.*?<div class="t">(.*?)</div>(?:<div class="u">(.*?)</div>)?', body, flags=re.S)
