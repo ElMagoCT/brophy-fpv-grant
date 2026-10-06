@@ -20,6 +20,24 @@
   }
   window.addEventListener('resize', fit);
 
+
+  /* --------------------------------------------------- city skyline layers */
+  (function buildCity() {
+    var layers = document.querySelectorAll('#city .layer'); if (!layers.length) return;
+    var seed = 7; function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    Array.prototype.forEach.call(layers, function (L, li) {
+      var W = 1600, H = 400, x = 0, parts = [], minW = [70, 50, 36][li], maxW = [160, 120, 90][li], minH = [60, 90, 120][li], maxH = [220, 300, 390][li];
+      while (x < W) {
+        var w = minW + rnd() * (maxW - minW), h = minH + rnd() * (maxH - minH), y = H - h;
+        parts.push('<rect class="b" x="' + x.toFixed(0) + '" y="' + y.toFixed(0) + '" width="' + w.toFixed(0) + '" height="' + h.toFixed(0) + '"/>');
+        if (li > 0) for (var wy = y + 10; wy < H - 14; wy += 16) for (var wx = x + 7; wx < x + w - 10; wx += 13) if (rnd() < .55) parts.push('<rect class="w' + (rnd() < .12 ? ' lit' : '') + '" x="' + wx.toFixed(0) + '" y="' + wy.toFixed(0) + '" width="6" height="8"/>');
+        if (rnd() < .25) { var ax = x + w / 2; parts.push('<line class="ant" x1="' + ax.toFixed(0) + '" y1="' + y + '" x2="' + ax.toFixed(0) + '" y2="' + (y - 30) + '"/><circle class="beacon" cx="' + ax.toFixed(0) + '" cy="' + (y - 32) + '" r="2.5"/>'); }
+        x += w + 4 + rnd() * 18;
+      }
+      L.innerHTML = '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="xMidYMax slice">' + parts.join('') + '</svg>';
+    });
+  })();
+
   /* -------------------------------------------------------------- demos */
   function mount(id, demo) {
     var node = document.getElementById(id); if (!node || !demo) return;
@@ -72,7 +90,7 @@
     cur = n;
     var dur = reduce ? 320 : 800;
     var sNew = scenes[n], sOld = old >= 0 ? scenes[old] : null;
-    flying = true; body.classList.add('flying');
+    flying = true; body.classList.add('flying'); body.classList.toggle('back', !fwd);
     if (sOld) {
       demos(old, false);
       sOld.classList.remove('active', 'enter-fwd', 'enter-back');
@@ -93,7 +111,7 @@
     setTimeout(function () {
       if (sOld) { sOld.classList.remove('leaving', 'leave-fwd', 'leave-back'); }
       sNew.classList.remove('enter-fwd', 'enter-back');
-      flying = false; body.classList.remove('flying');
+      flying = false; body.classList.remove('flying', 'back');
       demos(n, true);
     }, dur);
   }
