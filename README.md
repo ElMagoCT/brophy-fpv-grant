@@ -49,8 +49,8 @@ self-hosted. Open it over http, not `file://`, or the notes cannot load.
 
 ## Numbers to keep straight
 
-The proposal's headline says 27 badges; the badge list, the website and this deck
-say **28** (seven per track). The sim-hours threshold is **7.5 h** everywhere.
+The proposal says 27/28 badges; since 2026-10-06 the catalogue, the website
+and this deck say **23** (Flight 7, Build 6, Knowledge 5, Crew 5). The sim-hours threshold is **7.5 h** everywhere.
 Tier numbering is the club's: simulator is Tier 0.
 
 ## Preview locally

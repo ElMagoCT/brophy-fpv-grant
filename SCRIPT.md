@@ -10,8 +10,8 @@ Everything in `[EDIT: …]` is a place to put something true and personal. The
 committee remembers names, dates and one honest moment, not adjectives. Sixteen
 slides at about 40 seconds each is a ten-minute talk with time for questions.
 
-Numbers to keep straight: the proposal headline says 27 badges, the list has
-**28** (seven per track). The title slide's hours figure is live from the lab;
+Numbers to keep straight: the proposal says 27 or 28 badges; since 2026-10-06
+the catalogue has **23** (Flight 7, Build 6, Knowledge 5, Crew 5). The title slide's hours figure is live from the lab;
 "+10 new pilots" and "80% underclassmen" are yours to confirm.
 
 ---
@@ -24,7 +24,7 @@ We're asking for two thousand dollars, once. But the money is the smallest part 
 
 [EDIT: one sentence on why you fly. The first time you put goggles on, or the first shot you got of campus. Short and real.]
 
-Those numbers are from this year: [EDIT: read the live hours figure] hours of simulator practice already logged, [EDIT: confirm] ten new pilots, and a twenty-eight-badge curriculum we'll walk through.
+Those numbers are from this year: [EDIT: read the live hours figure] hours of simulator practice already logged, [EDIT: confirm] ten new pilots, and a twenty-three-badge curriculum we'll walk through.
 
 > Click → next slide
 
@@ -50,7 +50,7 @@ Crew and leadership: spotting, planning a shoot, running an event, and eventuall
 
 > Click: the closing line
 
-Seven badges in each track, twenty-eight total. The idea in one line: a pilot is not a pilot until they can also build, reason and lead.
+Twenty-three badges across the four tracks. The idea in one line: a pilot is not a pilot until they can also build, reason and lead.
 
 > Click → next slide
 
@@ -70,7 +70,7 @@ Then real aircraft: Tiny Whoop on a sub-250-gram drone, Freestyle, Indoor Proxim
 
 Build and tech is the track that transfers furthest outside drones.
 
-Battery Care first, because lithium batteries are the real fire risk in this hobby. Building: a complete drone from parts. Betaflight: flashing firmware, motor order, binding a radio. Soldering: an ESC and motors. Field Repair: swap a motor, diagnose a drone that won't arm. Video Systems and Tuning are electives for the people who go deep.
+Battery Care first, because lithium batteries are the real fire risk in this hobby. Building: a complete drone from parts. Betaflight: flashing firmware, motor order, binding a radio. Soldering: an ESC and motors. Field Diagnostics: work out why a drone won't arm, swap a motor or prop in the field. Tuning is the elective for the people who go deep.
 
 [EDIT: if anyone on the team is in robotics or an engineering class, say so here.]
 
@@ -80,15 +80,15 @@ Battery Care first, because lithium batteries are the real fire risk in this hob
 
 This is the track that makes the program responsible rather than just fun.
 
-Safe Flight is the club's written rules, quizzed. Electrical Components and Radio Protocol are the theory behind why parts match and why video drops out. Airspace matters because Brophy sits near Sky Harbor's controlled airspace. Emergency Procedures is a plan for when something goes wrong. Event Ops is the ground work before flying at a game. And FAA TRUST is the federal certificate: free, twenty minutes, required of every flying member.
+Safe Flight is the club's written rules, quizzed, plus the basics of airspace, because Brophy sits under Sky Harbor's Class B. Electrical Components and Radio Protocol are the theory behind why parts match, why video drops out, and how to set up the digital video system so the footage is usable. Event Ops is the ground work before flying at a game and the plan for when something goes wrong: failsafe, flyaway, fire, the incident report. And FAA TRUST is the federal certificate: free, twenty minutes, required of every flying member.
 
 > Click → next slide
 
 ## 6. Track: Crew & leadership
 
-The fourth track is people. Spotter, because an FPV pilot cannot see around themselves. Cinematography and Shot Planning: working with a coach or a moderator professionally. Editing, so the footage doesn't depend on one person. Fleet Steward: accountability for school gear.
+The fourth track is people. Spotter, because an FPV pilot cannot see around themselves. Cinematography, which starts with a shot list agreed with a coach or moderator: working with other organizations professionally. Editing, so the footage doesn't depend on one person. Fleet Steward: accountability for school gear.
 
-And the two that make this a program: Mentor, coach a new member through their first two badges, and Examiner, which defines who may sign a badge off.
+And the one that makes this a program: Mentor. Coach a new member through their first two badges, and then, with an officer's approval, you may sign off the badges you hold.
 
 > Click → next slide
 
@@ -136,7 +136,7 @@ A badge is one specific, testable skill. Earn every badge in a tier and the next
 
 > Click: demonstration, not attendance
 
-Badges are earned by doing, not by showing up. Knowledge badges are ten-question quizzes the kiosk grades and awards itself. Bench badges are a checklist and a photo of the work, approved by an instructor. Flying badges are witnessed by an examiner against a written standard. And the FAA certificate goes on file.
+Badges are earned by doing, not by showing up. Knowledge badges are ten-question quizzes the kiosk grades and awards itself. Bench badges are a checklist and a photo of the work, approved by an instructor. Flying badges are witnessed by a mentor against a written standard. And the FAA certificate goes on file.
 
 > Click: the record
 
@@ -144,7 +144,7 @@ There is one badge catalogue shared by the kiosk and the website. Every award is
 
 On the right: the four tiers, animating one pilot climbing from the sim to Event Pilot.
 
-Why each badge exists, if asked: Battery Care because LiPos are the real fire risk. Airspace because we're next to Sky Harbor. Spotter because the pilot can't see around themselves. Mentor because the program has to train its own replacements.
+Why each badge exists, if asked: Battery Care because LiPos are the real fire risk. Safe Flight carries airspace because we're next to Sky Harbor. Spotter because the pilot can't see around themselves. Mentor because the program has to train its own replacements and someone has to be allowed to sign off.
 
 > Click → next slide
 
@@ -188,9 +188,9 @@ This is the slide I care about most. [EDIT: say why. "I'm a senior; this has to 
 
 Normally skills graduate with the seniors. Here they're badges, and [EDIT: confirm] eighty percent of the club is underclassmen.
 
-> Click: Mentor and Examiner
+> Click: Mentor
 
-The Mentor badge is coaching a new member through two badges. Examiner is defined by badges held plus officer approval. The program produces its own teachers every year.
+The Mentor badge is coaching a new member through two badges; after that, with an officer's approval, a mentor may sign off the badges they hold. The program produces its own teachers every year.
 
 > Click: everything written down
 
@@ -290,7 +290,7 @@ Mr. Reasy, then Mr. Burr for Student Activities sign-off, then Student Council a
 
 > Click: once funded
 
-Once funded: order the fleet, publish the badge sheet, certify our current pilots as the first examiners, and start every new member on Simulator Flight.
+Once funded: order the fleet, publish the badge sheet, certify our current pilots as the first mentors, and start every new member on Simulator Flight.
 
 > Click: open items
 
@@ -314,7 +314,7 @@ Questions?
 
 ### Likely questions, and short answers
 
-- **What if nobody wants to be a mentor?** Examiner is the only way badges get signed off, so the program can't run without producing mentors and examiners. The current pilots are certified as the first examiners the week it's funded.
+- **What if nobody wants to be a mentor?** Mentors are the only way badges get signed off, so the program can't run without producing them. The current pilots are certified as the first mentors the week it's funded.
 - **Who is liable if a drone hits someone?** Nothing over 250 g until Tier 2; Tier 2 can't fly at an event without Spotter, Event Ops and FAA TRUST. The damage and liability policy is an open item before submission. [EDIT: where it stands.]
 - **Isn't two thousand dollars a lot for a club?** One-time build-out: pilot kit about eight years, airframes about four, spares in the list. Not a recurring ask.
 - **What happens to the gear in summer?** Fleet Steward runs check-in/out and a maintenance log; the gear lives with [EDIT: the moderator / the IC].
