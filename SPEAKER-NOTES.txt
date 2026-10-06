@@ -1,23 +1,25 @@
-# Speaker script — "Pilots before drones"
+SPEAKER SCRIPT — "PILOTS BEFORE DRONES"
 
-One section per slide, in order. Press **N** in the deck to see the current
-slide's section beside it. Lines starting with `>` are click cues: each click
+One section per slide, in order. Press N in the deck to see the current
+slide's section beside it. Lines starting with > are click cues: each click
 reveals the next bullet, and when the bullets are done the next click moves to
-the next slide. Press **A** to show every bullet at once if you would rather
+the next slide. Press A to show every bullet at once if you would rather
 talk over a finished slide.
 
-Everything in `[EDIT: …]` is a place to put something true and personal. The
+Everything in [EDIT: …] is a place to put something true and personal. The
 committee remembers names, dates and one honest moment, not adjectives. Seventeen
 slides at about 40 seconds each is a ten-minute talk with time for questions.
-All bullets show at once by default; press **A** to reveal them one click at a time.
+All bullets show at once by default; press A to reveal them one click at a time.
 
 Numbers to keep straight: the proposal says 27 or 28 badges; since 2026-10-06
-the catalogue has **23** (Flight 7, Build 6, Knowledge 5, Crew 5). The title slide's hours figure is live from the lab;
+the catalogue has 23 (Flight 7, Build 6, Knowledge 5, Crew 5). The title slide's hours figure is live from the lab;
 "+10 new pilots" and "80% underclassmen" are yours to confirm.
 
----
 
-## 1. Pilots before drones
+
+========================================================================
+SLIDE 1 — PILOTS BEFORE DRONES
+========================================================================
 
 Good morning. I'm Micah Tucker, president of the FPV Club, and this is [EDIT: who is presenting with you, and their roles].
 
@@ -27,9 +29,12 @@ We're asking for two thousand dollars, once. But the money is the smallest part 
 
 Those numbers are from this year: [EDIT: read the live hours figure] hours of simulator practice already logged, [EDIT: confirm] ten new pilots, and a twenty-three-badge curriculum we'll walk through.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 2. Brophy's future of UAV flight
+
+========================================================================
+SLIDE 2 — BROPHY'S FUTURE OF UAV FLIGHT
+========================================================================
 Before the program, a minute on why this matters right now. [EDIT: check the four numbers before the room; they are good-faith estimates from FAA, MultiGP and news coverage, not from the proposal.]
 
 In 2016 the FAA had just created the commercial drone licence and almost nobody held it. Today more than four hundred thousand people do. Over a million recreational pilots hold the free FAA TRUST certificate. Tens of thousands of people race FPV in organised leagues, and those leagues are on ESPN and NBC.
@@ -40,37 +45,43 @@ It's work: bridges, power lines, solar farms, roofs, crops. It's culture: the sh
 
 And it belongs in a school because it is very fun, very skilful, and it takes a lot of learning: physics, electronics, law, judgment. [EDIT: your own line about why you got into it.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 3. Four tracks of skill
+
+========================================================================
+SLIDE 3 — FOUR TRACKS OF SKILL
+========================================================================
 
 Start with the skills, because that's what this is actually for.
 
-> Click: Flight
+    [CLICK] Flight
 
 Flight is the obvious one: stick skills, from sim hours to racing.
 
-> Click: Build & tech
+    [CLICK] Build & tech
 
 Build and tech: batteries, soldering, firmware, repair, tuning. The stuff that makes a drone work.
 
-> Click: Knowledge & safety
+    [CLICK] Knowledge & safety
 
 Knowledge and safety: the rules, the electronics theory, airspace law, emergency procedures, and the FAA certificate.
 
-> Click: Crew & leadership
+    [CLICK] Crew & leadership
 
 Crew and leadership: spotting, planning a shoot, running an event, and eventually teaching and examining the next class.
 
-> Click: the closing line
+    [CLICK] the closing line
 
 Twenty-three badges across the four tracks. The idea in one line: a pilot is not a pilot until they can also build, reason and lead.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 4. Track: Flight
 
-_No bullets to click; these seven cards are the whole track._
+========================================================================
+SLIDE 4 — TRACK: FLIGHT
+========================================================================
+
+(No bullets to click; these seven cards are the whole track.)
 
 The Flight track takes someone from never having flown to racing. Simulator Flight is seven and a half hours in the sim. Proficient Flight is orbit, Split-S, gaps and a finished race, in the sim, so it can gate the first real battery. Line of Sight is landing without goggles, for the day the video cuts out.
 
@@ -78,9 +89,12 @@ Then real aircraft: Tiny Whoop on a sub-250-gram drone, Freestyle, Indoor Proxim
 
 [EDIT: name a member and where they are on this track.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 5. Track: Build & tech
+
+========================================================================
+SLIDE 5 — TRACK: BUILD & TECH
+========================================================================
 
 Build and tech is the track that transfers furthest outside drones.
 
@@ -88,70 +102,85 @@ Battery Care first, because lithium batteries are the real fire risk in this hob
 
 [EDIT: if anyone on the team is in robotics or an engineering class, say so here.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 6. Track: Knowledge & safety
+
+========================================================================
+SLIDE 6 — TRACK: KNOWLEDGE & SAFETY
+========================================================================
 
 This is the track that makes the program responsible rather than just fun.
 
 Safe Flight is the club's written rules, quizzed, plus the basics of airspace, because Brophy sits under Sky Harbor's Class B. Electrical Components and Radio Protocol are the theory behind why parts match, why video drops out, and how to set up the digital video system so the footage is usable. Event Ops is the ground work before flying at a game and the plan for when something goes wrong: failsafe, flyaway, fire, the incident report. And FAA TRUST is the federal certificate: free, twenty minutes, required of every flying member.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 7. Track: Crew & leadership
+
+========================================================================
+SLIDE 7 — TRACK: CREW & LEADERSHIP
+========================================================================
 
 The fourth track is people. Spotter, because an FPV pilot cannot see around themselves. Cinematography, which starts with a shot list agreed with a coach or moderator: working with other organizations professionally. Editing, so the footage doesn't depend on one person. Fleet Steward: accountability for school gear.
 
 And the one that makes this a program: Mentor. Coach a new member through their first two badges, and then, with an officer's approval, you may sign off the badges you hold.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 8. What a graduate can do
-_The ring keeps turning on its own. Drag it or use the arrows to stop on a card._
+
+========================================================================
+SLIDE 8 — WHAT A GRADUATE CAN DO
+========================================================================
+(The ring keeps turning on its own. Drag it or use the arrows to stop on a card.)
 
 This is the whole list, fourteen cards. A student who finishes this can build and repair a drone, fly it in acro, land it blind, charge batteries safely, read the airspace over Phoenix, run an emergency, spot for a pilot, plan a shoot with a coach, cut a clip, and teach the next person.
 
 [EDIT: stop the ring on the two or three cards that mean the most to you and say why.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 9. Lowering the barrier to entry
+
+========================================================================
+SLIDE 9 — LOWERING THE BARRIER TO ENTRY
+========================================================================
 
 None of that works if it's hard to start. So we made starting free and obvious.
 
-> Click: the sim lab
+    [CLICK] the sim lab
 
 Over the summer [EDIT: when exactly] we set up five FPV simulators in the IC, open seven to four on school days. You tap your name, pick a sim, fly. Crashes cost nothing.
 
-> Click: Ground School
+    [CLICK] Ground School
 
 If there's no seat, Ground School runs on the same machine and on any phone: forty-five lessons, drills on the real transmitter, quizzes. Progress follows you.
 
-> Click: zero cost
+    [CLICK] zero cost
 
 Sim hours, lessons, quizzes and the FAA certificate are all free. Club gear is shared and checked out, so nobody needs to own a drone.
 
-> Click: clear first steps
+    [CLICK] clear first steps
 
 And the first steps are written down: name at the kiosk, seven and a half sim hours, two quizzes, build and flash a trainer, first real flight.
 
 The numbers on the right are live from the lab right now. [EDIT: read them out.] [EDIT: who built the kiosk and the lessons, and how long it took.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 10. Structure that ensures learning
+
+========================================================================
+SLIDE 10 — STRUCTURE THAT ENSURES LEARNING
+========================================================================
 
 Here's the structure underneath it.
 
-> Click: badges unlock gear
+    [CLICK] badges unlock gear
 
 A badge is one specific, testable skill. Earn every badge in a tier and the next drone is yours to fly. So "who may fly what" is written down, not remembered.
 
-> Click: demonstration, not attendance
+    [CLICK] demonstration, not attendance
 
 Badges are earned by doing, not by showing up. Knowledge badges are ten-question quizzes the kiosk grades and awards itself. Bench badges are a checklist and a photo of the work, approved by an instructor. Flying badges are witnessed by a mentor against a written standard. And the FAA certificate goes on file.
 
-> Click: the record
+    [CLICK] the record
 
 There is one badge catalogue shared by the kiosk and the website. Every award is signed by the instructor who approved it, progress only moves forward, and the board is visible to anyone.
 
@@ -159,67 +188,76 @@ On the right: the four tiers, animating one pilot climbing from the sim, to the 
 
 Why each badge exists, if asked: Battery Care because LiPos are the real fire risk. Safe Flight carries airspace because we're next to Sky Harbor. Spotter because the pilot can't see around themselves. Mentor because the program has to train its own replacements and someone has to be allowed to sign off.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 11. Structure that ensures safety
+
+========================================================================
+SLIDE 11 — STRUCTURE THAT ENSURES SAFETY
+========================================================================
 
 Safety is written down, not assumed.
 
-> Click: the rules
+    [CLICK] the rules
 
 The Brophy FPV safe-flight rules are published and quizzed. Passing them is a badge.
 
-> Click: 250 grams
+    [CLICK] 250 grams
 
 Nothing over 250 grams until the top tier.
 
-> Click: no real drone before…
+    [CLICK] no real drone before…
 
 No real drone before Safe Flight and Battery Care. No flying at an event before FAA TRUST.
 
-> Click: event protocol
+    [CLICK] event protocol
 
 At events: a spotter on every flight, a flight zone set up, bystanders briefed, failsafe tested, ducted airframes anywhere near people.
 
-> Click: batteries
+    [CLICK] batteries
 
 Batteries: balance charging, storage voltage, puffed-pack checks, a smoke stopper on every first power-up, and a fire procedure that's drilled, not read.
 
-> Click: airspace
+    [CLICK] airspace
 
 Airspace: check B4UFLY, request LAANC when needed, and write the incident report the same day if anything goes wrong.
 
 [EDIT: where the damage and liability policy stands.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 12. Structure that ensures sustainability
+
+========================================================================
+SLIDE 12 — STRUCTURE THAT ENSURES SUSTAINABILITY
+========================================================================
 
 This is the slide I care about most. [EDIT: say why. "I'm a senior; this has to work without me."]
 
-> Click: skills graduate
+    [CLICK] skills graduate
 
 Normally skills graduate with the seniors. Here they're badges, and the club is heavily underclassmen: we gain members every week. [EDIT: the actual count today, and how many joined this month.]
 
-> Click: Mentor
+    [CLICK] Mentor
 
 The Mentor badge is coaching a new member through two badges; after that, with an officer's approval, a mentor may sign off the badges they hold. The program produces its own teachers every year.
 
-> Click: everything written down
+    [CLICK] everything written down
 
 Everything is written down: the badge sheet, the safety rules, seven printed posters above the sims, and a website with live lab numbers that runs itself.
 
-> Click: kiosk and lessons
+    [CLICK] kiosk and lessons
 
 The kiosk and the lessons are already built and maintained by students.
 
-> Click: recruiting
+    [CLICK] recruiting
 
 And recruiting is built in: the fall assembly pitch, a pep-rally race the whole school watches through the goggles, the posters, and a public website.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 13. Other yields for Brophy
+
+========================================================================
+SLIDE 13 — OTHER YIELDS FOR BROPHY
+========================================================================
 Beyond the pilots themselves, here's what else the school gets. The banner first, then three cards.
 
 Best of Brophy: short aerial clips through the year, cut into two showcase films a year for admissions, assemblies and social media.
@@ -230,44 +268,53 @@ Community-period races: the pep rally, "Written in the Stars," with the pilot's-
 
 Interest is already here: Stuco, the racing club, admissions and sports have asked. [EDIT: confirm who, specifically.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 14. The equipment we want
+
+========================================================================
+SLIDE 14 — THE EQUIPMENT WE WANT
+========================================================================
 Here's what the money buys, with the reason beside each.
 
-> Click: goggles
+    [CLICK] goggles
 
 Two sets of DJI N3 goggles, so two pilots can train or fly at once. About an eight-year life: this is the part the school buys once.
 
-> Click: radios
+    [CLICK] radios
 
 Two RadioMaster Pocket radios, one each for the sim and the air. They last as long as the goggles.
 
-> Click: trainers
+    [CLICK] trainers
 
 Two Meteor 75 Pro trainers. Under 250 grams, ducted, safe indoors, and cheap to crash. Eight students are waiting with no drone to share.
 
-> Click: the camera ship
+    [CLICK] the camera ship
 
 One Pavo 20 Pro: a ducted camera drone with a flat-profile camera we can grade. It's what Best of Brophy is shot on and the Tier 2 test airframe.
 
-> Click: accessories
+    [CLICK] accessories
 
 Accessories: batteries, a charger, frames, props, electronics, a smoke stopper, tools, a backpack. Crashes become repair lessons instead of purchase orders. Exactly how much of this we can afford is still to be decided once the main items are priced.
 
 Everything under 250 grams except the camera tier. Airframes about four years, the pilot kit about eight. [EDIT: who is donating what.]
 
-> Click → next slide
+    [CLICK] next slide
 
-## 15. Budget at a glance
-_No clicks; the bars draw themselves._
+
+========================================================================
+SLIDE 15 — BUDGET AT A GLANCE
+========================================================================
+(No clicks; the bars draw themselves.)
 
 Pilot kit, trainers, camera ship, accessories and the race course. Parts come to about seventeen hundred and sixty dollars; with tax and shipping, roughly eighteen seventy, inside the ask with about a hundred and thirty of headroom that goes to electronics and spares. Prices move, so the final order follows the proposal's parts list, with me in the room.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 16. Timeline
-_The lit line runs from founding to today and stops on "this presentation"; the rest of the dots stay dark. Let it finish before you talk._
+
+========================================================================
+SLIDE 16 — TIMELINE
+========================================================================
+(The lit line runs from founding to today and stops on "this presentation"; the rest of the dots stay dark. Let it finish before you talk.)
 
 Where we've been: the club formed in the spring [EDIT: when exactly], we set up the simulators and the kiosk over the summer, we passed twenty members this fall, mostly underclassmen, and we built the badge system: Flight School, the catalogue, the posters.
 
@@ -275,9 +322,12 @@ Today is this presentation, and then Mr. Burr, Stuco and the assembly.
 
 Where it goes once funded: order the fleet, train the new members through Tier 0 to their first real flight, film Best of Brophy, and race at the pep rally and in community period.
 
-> Click → next slide
+    [CLICK] next slide
 
-## 17. Thank you
+
+========================================================================
+SLIDE 17 — THANK YOU
+========================================================================
 Thank you. Pilots before drones.
 
 Everything is on the screen: the proposal, this deck, the live dashboard, Flight School, the posters, the flight reel.
@@ -286,13 +336,13 @@ Everything is on the screen: the proposal, this deck, the live dashboard, Flight
 
 Questions?
 
----
 
-### Likely questions, and short answers
 
-- **What if nobody wants to be a mentor?** Mentors are the only way badges get signed off, so the program can't run without producing them. The current pilots are certified as the first mentors the week it's funded.
-- **Who is liable if a drone hits someone?** Nothing over 250 g until Tier 2; Tier 2 can't fly at an event without Spotter, Event Ops and FAA TRUST. The damage and liability policy is an open item before submission. [EDIT: where it stands.]
-- **Isn't two thousand dollars a lot for a club?** One-time build-out: pilot kit about eight years, airframes about four, spares in the list. Not a recurring ask.
-- **What happens to the gear in summer?** Fleet Steward runs check-in/out and a maintenance log; the gear lives with [EDIT: the moderator / the IC].
-- **How many students will this reach?** [EDIT: members today, pilots training, how many have used the sim lab this semester. The dashboard shows it live.]
-- **Why not just buy a camera drone and use it?** Because two people fly it and it leaves with them. The badge program is the thing the school keeps.
+--- Likely questions, and short answers ---
+
+  • What if nobody wants to be a mentor? Mentors are the only way badges get signed off, so the program can't run without producing them. The current pilots are certified as the first mentors the week it's funded.
+  • Who is liable if a drone hits someone? Nothing over 250 g until Tier 2; Tier 2 can't fly at an event without Spotter, Event Ops and FAA TRUST. The damage and liability policy is an open item before submission. [EDIT: where it stands.]
+  • Isn't two thousand dollars a lot for a club? One-time build-out: pilot kit about eight years, airframes about four, spares in the list. Not a recurring ask.
+  • What happens to the gear in summer? Fleet Steward runs check-in/out and a maintenance log; the gear lives with [EDIT: the moderator / the IC].
+  • How many students will this reach? [EDIT: members today, pilots training, how many have used the sim lab this semester. The dashboard shows it live.]
+  • Why not just buy a camera drone and use it? Because two people fly it and it leaves with them. The badge program is the thing the school keeps.

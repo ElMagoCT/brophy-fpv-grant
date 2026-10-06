@@ -5,11 +5,13 @@ proposal. Plain HTML/CSS/JS, no build step, served by GitHub Pages:
 
 **https://elmagoct.github.io/brophy-fpv-grant/**
 
-Sixteen slides in the order skills → access → structure → yields → gear →
-timeline, presented as a night fly-through: the city is the background, each
-slide is a floating neon sign on a winding 3D route, a pulsing trail links sign
-to sign, and the camera flies between them. Live renderings of the club's real
-badge catalogue and lab numbers; product photos on the equipment slide.
+Seventeen slides (intro, why drones now, skills → access → structure → yields
+→ gear → budget → timeline → thanks), presented as a night fly-through: the
+city is the background with light trails behind, every slide is a cluster of
+solid floating cards, a neon path threads the cards in order and runs on to
+the next slide, and the camera pans sideways along a winding route with the
+direction changing each step. Live renderings of the club's real badge
+catalogue and lab numbers; product photos on the equipment slide.
 
 ## Presenting
 
@@ -22,8 +24,9 @@ badge catalogue and lab numbers; product photos on the equipment slide.
 | **G** | the slide list: jump to any slide |
 | **F** | fullscreen · **1–9** jump · **Home / End** |
 
-The URL carries the slide (`#/7`), so a reload lands on the same slide. Slide 7
-is a 3D ring of skill cards: drag it, use the arrows, or let it turn.
+The URL carries the slide (`#/7`), so a reload lands on the same slide. Slide 8
+is a 3D ring of skill cards that turns on its own: drag it or use the arrows.
+`SPEAKER-NOTES.txt` is the script as plain text (regenerated from `SCRIPT.md`).
 
 The deck works offline except for the live lab numbers on slides 1 and 8
 (it falls back to a dated snapshot and says so). Fonts are
@@ -31,7 +34,10 @@ self-hosted. Open it over http, not `file://`, or the notes cannot load.
 
 ## Editing
 
-- **Words** are in `index.html`. Each `<section class="scene">` is one slide;
+- **Words** are in `index.html`. Each `<section class="scene">` is one slide, a
+  12-column grid of `.card`s (`grid-column:span N`); the neon path follows card
+  order, so order cards the way you want the eye to travel. The asset URLs carry
+  `?v=N`; bump it when CSS or JS change so phones don't show a cached copy;
   `data-title` names it in the slide list (G). `<li class="frag">` reveals one
   click at a time; a slide with `data-nofrag` has no click-stops. Slides 3–6 are filled from `badges.js` by `demos.js`.
 - **Script** is `SCRIPT.md`: one `## n. Title` per slide, in order; `> ` lines are

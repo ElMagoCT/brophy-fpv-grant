@@ -1,113 +1,142 @@
-/* The fly-through: every <section class="scene"> is a sign placed along a
-   winding 3D route; #route is moved so the current sign sits at the origin,
-   and a CSS transition on that transform is the camera flight. Neon trails
-   are thin 3D bars between consecutive signs. The city parallaxes with the
-   camera. Hash #/n keeps the place; N notes, G list, A bullets, F fullscreen. */
+/* The fly-through. Every <section class="scene"> is a cluster of cards laid
+   out on a 1280×780 canvas and placed along a winding route that runs mostly
+   sideways; #route is moved so the current slide sits at the origin, and the
+   CSS transition on that transform is the camera pan (no fades). Inside each
+   slide an SVG path threads the cards in order; a 3D bar carries the path on
+   to the next slide. Hash #/n keeps the place; N notes, G list, A bullets,
+   F fullscreen. */
 (function () {
   var scenes = Array.prototype.slice.call(document.querySelectorAll('.scene'));
   var cur = -1, moving = false;
   var body = document.body, D = window.DEMOS || {}, demoFor = {}, notes = [];
   var route = document.getElementById('route');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var W = 1280, H = 780;
 
   /* ----------------------------------------------------------- route */
-  var STEP = 2200;                                   // depth between signs
-  var pos = scenes.map(function (s, i) {
-    return { x: Math.sin(i * 1.15) * 760, y: Math.cos(i * 0.9) * 230 - 40, z: -i * STEP };
-  });
+  // Mostly sideways, with the direction changing every step: up-right, down-right,
+  // a long flat run, a dip. Small depth changes keep the parallax alive.
+  var DX = 1900, YS = [0, -320, 260, -140, 380, -300, 120, -380, 240, -200, 360, -60, -340, 300, -220, 160];
+  var pos = scenes.map(function (s, i) { return { x: i * DX, y: YS[i % YS.length], z: (i % 3 === 1 ? -220 : i % 3 === 2 ? 160 : 0) }; });
   var fit = 1;
+  var cityLayers = Array.prototype.slice.call(document.querySelectorAll('#city .layer'));
+  var trails = scenes.slice(0, -1).map(function (s) {
+    var t = document.createElement('div'); t.className = 'trail';
+    t.style.setProperty('--tc', s.getAttribute('data-neon') || '#4de3ff'); route.appendChild(t); return t;
+  });
+  var paths = scenes.map(function (s) {
+    var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'path'); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    svg.innerHTML = '<polyline class="pl"/><polyline class="pulse"/>'; s.insertBefore(svg, s.firstChild); return svg;
+  });
+  function cardsOf(s) { return Array.prototype.filter.call(s.querySelectorAll('.card'), function (c) { return !c.closest('#carousel'); }); }
+  function centre(c, s) { // layout coordinates inside the scene, unaffected by transforms
+    var x = c.offsetWidth / 2, y = c.offsetHeight / 2, e = c;
+    while (e && e !== s) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; }
+    return { x: x, y: y };
+  }
+  var ends = [];   // per scene: {first:{x,y}, last:{x,y}} in scene coordinates
+  function drawPaths() {
+    scenes.forEach(function (s, i) {
+      var cs = cardsOf(s); if (!cs.length) return;
+      var pts = cs.map(function (c) { return centre(c, s); });
+      // the path enters from the left edge and leaves by the right edge, so the
+      // 3D bar to the next slide never has to cross a card
+      var entry = { x: -40, y: pts[0].y }, exit = { x: W + 40, y: pts[pts.length - 1].y };
+      var all = (i > 0 ? [entry] : []).concat(pts, i < scenes.length - 1 ? [exit] : []);
+      var str = all.map(function (p) { return p.x.toFixed(0) + ',' + p.y.toFixed(0); }).join(' ');
+      var pl = paths[i].querySelector('.pl'), pu = paths[i].querySelector('.pulse');
+      pl.setAttribute('points', str); pu.setAttribute('points', str);
+      var dots = paths[i].querySelectorAll('circle'); Array.prototype.forEach.call(dots, function (d) { d.remove(); });
+      pts.forEach(function (p) { var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 6); paths[i].appendChild(c); });
+      ends[i] = { first: entry, last: exit };
+    });
+  }
   function layout() {
     var w = window.innerWidth, h = window.innerHeight - 44;
-    fit = Math.min((w - (w < 700 ? 8 : 90)) / 1280, (h - (w < 700 ? 8 : 80)) / 720) * (w < 700 ? 1 : 0.82);   // leave sky and city around the sign
+    fit = Math.min((w - (w < 700 ? 8 : 60)) / W, (h - (w < 700 ? 8 : 60)) / H) * (w < 700 ? 1 : 0.97);
+    // a slide whose cards run past the canvas is scaled down to fit it
     scenes.forEach(function (s, i) {
-      var p = pos[i];
-      s.style.transform = 'translate3d(' + p.x * fit + 'px,' + p.y * fit + 'px,' + p.z * fit + 'px) scale(' + fit + ')';
+      var p = pos[i], cs = cardsOf(s), bottom = 0;
+      cs.forEach(function (c) { var y = c.offsetHeight, e = c; while (e && e !== s) { y += e.offsetTop; e = e.offsetParent; } if (y > bottom) bottom = y; });
+      var car = s.querySelector('#carousel'); if (car) bottom = Math.max(bottom, car.offsetTop + car.offsetHeight);
+      var sf = Math.min(1, H / Math.max(1, bottom + 10));
+      s.style.transform = 'translate3d(' + p.x * fit + 'px,' + (p.y * fit + (H - H * sf) / 2 * fit * 0) + 'px,' + p.z * fit + 'px) scale(' + (fit * sf) + ')';
     });
+    drawPaths();
     trails.forEach(function (t, i) {
-      var a = pos[i], b = pos[i + 1];
-      var dx = (b.x - a.x) * fit, dy = (b.y - a.y) * fit, dz = (b.z - a.z) * fit;
-      var len = Math.sqrt(dx * dx + dy * dy + dz * dz);
-      var ry = Math.atan2(-dz, dx) * 180 / Math.PI;          // yaw in the x/z plane
-      var rz = Math.asin(dy / len) * 180 / Math.PI;          // pitch toward y
-      // start a little behind the sign so the bar leaves from its lower edge
-      t.style.transform = 'translate3d(' + (a.x * fit) + 'px,' + (a.y * fit + 330 * fit) + 'px,' + (a.z * fit - 20) + 'px) rotateY(' + ry + 'deg) rotateZ(' + rz + 'deg)';
+      var a = pos[i], b = pos[i + 1], ea = ends[i] || { last: { x: W / 2, y: H / 2 } }, eb = ends[i + 1] || { first: { x: W / 2, y: H / 2 } };
+      var ax = (a.x + ea.last.x - W / 2) * fit, ay = (a.y + ea.last.y - H / 2) * fit, az = a.z * fit;
+      var bx = (b.x + eb.first.x - W / 2) * fit, by = (b.y + eb.first.y - H / 2) * fit, bz = b.z * fit;
+      var dx = bx - ax, dy = by - ay, dz = bz - az, len = Math.sqrt(dx * dx + dy * dy + dz * dz);
+      var ry = Math.atan2(-dz, dx) * 180 / Math.PI, rz = Math.asin(dy / len) * 180 / Math.PI;
+      t.style.transform = 'translate3d(' + ax + 'px,' + ay + 'px,' + (az - 6) + 'px) rotateY(' + ry + 'deg) rotateZ(' + rz + 'deg)';
       t.style.width = len + 'px';
     });
     camera(false);
   }
-  var trails = scenes.slice(0, -1).map(function (s, i) {
-    var t = document.createElement('div'); t.className = 'trail';
-    t.style.setProperty('--tc', s.getAttribute('data-neon') || '#4de3ff');
-    route.appendChild(t); return t;
-  });
-  var cityLayers = Array.prototype.slice.call(document.querySelectorAll('#city .layer'));
   function camera(animate) {
     if (cur < 0) return;
     var p = pos[cur];
     if (!animate) { route.style.transition = 'none'; cityLayers.forEach(function (l) { l.style.transition = 'none'; }); }
     route.style.transform = 'translate3d(' + (-p.x * fit) + 'px,' + (-p.y * fit) + 'px,' + (-p.z * fit) + 'px)';
     cityLayers.forEach(function (l, k) {
-      var f = [0.04, 0.07, 0.11][k], fz = [0.012, 0.02, 0.03][k];
-      l.style.transform = 'translate3d(' + (-p.x * f + p.z * fz) + 'px,' + (-p.y * f * 0.5) + 'px,0)';
+      var f = [0.05, 0.09, 0.14][k];
+      l.style.transform = 'translate3d(' + (-p.x * f) + 'px,' + (-p.y * f * 0.35) + 'px,0)';
     });
     if (!animate) { void route.offsetWidth; route.style.transition = ''; cityLayers.forEach(function (l) { l.style.transition = ''; }); }
   }
   window.addEventListener('resize', layout);
+  window.PITCH = { relayout: function () { requestAnimationFrame(layout); } };
 
   /* ------------------------------------------------------------- city */
   (function buildCity() {
     var seed = 11; function rnd() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
     cityLayers.forEach(function (L, li) {
-      var W = 2400, H = [320, 420, 520][li], x = 0, parts = [];
-      var minW = [60, 46, 34][li], maxW = [150, 120, 96][li], minH = [60, 100, 140][li], maxH = [H * .7, H * .85, H * .98][li];
+      var CW = 2400, CH = [320, 420, 520][li], x = 0, parts = [];
+      var minW = [60, 46, 34][li], maxW = [150, 120, 96][li], minH = [60, 100, 140][li], maxH = [CH * .7, CH * .85, CH * .98][li];
       var fill = ['#0f1b31', '#13223d', '#182a4a'][li], win = ['rgba(255,220,150,', 'rgba(255,230,170,', 'rgba(255,240,200,'][li];
-      while (x < W) {
-        var w = minW + rnd() * (maxW - minW), h = minH + rnd() * (maxH - minH), y = H - h;
+      while (x < CW) {
+        var w = minW + rnd() * (maxW - minW), h = minH + rnd() * (maxH - minH), y = CH - h;
         parts.push('<rect x="' + x.toFixed(0) + '" y="' + y.toFixed(0) + '" width="' + w.toFixed(0) + '" height="' + h.toFixed(0) + '" fill="' + fill + '" stroke="rgba(170,200,240,.18)"/>');
-        if (li > 0) for (var wy = y + 10; wy < H - 12; wy += 15) for (var wx = x + 6; wx < x + w - 9; wx += 12) if (rnd() < .5) parts.push('<rect x="' + wx.toFixed(0) + '" y="' + wy.toFixed(0) + '" width="5" height="7" fill="' + win + (rnd() < .2 ? '.9' : '.35') + ')"/>');
-        if (li === 2 && rnd() < .3) { var ax = x + w / 2; parts.push('<line x1="' + ax.toFixed(0) + '" y1="' + y + '" x2="' + ax.toFixed(0) + '" y2="' + (y - 26) + '" stroke="rgba(200,220,255,.5)"/><circle cx="' + ax.toFixed(0) + '" cy="' + (y - 28) + '" r="2.5" fill="#ff5a5a"><animate attributeName="opacity" values="1;.1;1" dur="1.4s" repeatCount="indefinite"/></circle>'); }
+        if (li > 0) for (var wy = y + 10; wy < CH - 12; wy += 15) for (var wx = x + 6; wx < x + w - 9; wx += 12) if (rnd() < .5) parts.push('<rect x="' + wx.toFixed(0) + '" y="' + wy.toFixed(0) + '" width="5" height="7" fill="' + win + (rnd() < .2 ? '.9' : '.35') + ')"/>');
+        if (li === 2 && rnd() < .3) { var ax = x + w / 2; parts.push('<line x1="' + ax.toFixed(0) + '" y1="' + y + '" x2="' + ax.toFixed(0) + '" y2="' + (y - 26) + '" stroke="rgba(200,220,255,.5)"/><circle cx="' + ax.toFixed(0) + '" cy="' + (y - 28) + '" r="2.5" fill="#ff5a5a"/>'); }
         if (li === 2 && rnd() < .18) { var sx = x + 8 + rnd() * (w - 40), sy = y + 20 + rnd() * (h * .3), sw = 24 + rnd() * 30, col = ['#4de3ff', '#ff4fd8', '#9dff57', '#ffc14d'][Math.floor(rnd() * 4)]; parts.push('<rect x="' + sx.toFixed(0) + '" y="' + sy.toFixed(0) + '" width="' + sw.toFixed(0) + '" height="6" fill="' + col + '" opacity=".85"/>'); }
         x += w + 3 + rnd() * 14;
       }
-      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + W + ' ' + H + '" width="' + W + '" height="' + H + '">' + parts.join('') + '</svg>';
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + CW + ' ' + CH + '" width="' + CW + '" height="' + CH + '">' + parts.join('') + '</svg>';
       L.style.backgroundImage = 'url("data:image/svg+xml;charset=utf-8,' + encodeURIComponent(svg) + '")';
       L.style.backgroundSize = 'auto 100%';
     });
   })();
 
-  /* ---------------------------------------------------------- flyers */
-  (function buildFlyers() {
+  /* ------------------------------------------------------ light trails */
+  (function buildTrails() {
     var host = document.getElementById('flyers');
-    var QUAD = '<svg class="quad" viewBox="0 0 120 100">' +
-      '<path class="frame" d="M30 30 L90 70 M90 30 L30 70"/>' +
-      '<circle class="duct" cx="30" cy="30" r="20"/><circle class="duct" cx="90" cy="30" r="20"/><circle class="duct" cx="30" cy="70" r="20"/><circle class="duct" cx="90" cy="70" r="20"/>' +
-      '<g class="prop"><ellipse cx="30" cy="30" rx="16" ry="5"/><ellipse cx="30" cy="30" rx="5" ry="16"/></g>' +
-      '<g class="prop" style="animation-direction:reverse"><ellipse cx="90" cy="30" rx="16" ry="5"/><ellipse cx="90" cy="30" rx="5" ry="16"/></g>' +
-      '<g class="prop" style="animation-direction:reverse"><ellipse cx="30" cy="70" rx="16" ry="5"/><ellipse cx="30" cy="70" rx="5" ry="16"/></g>' +
-      '<g class="prop"><ellipse cx="90" cy="70" rx="16" ry="5"/><ellipse cx="90" cy="70" rx="5" ry="16"/></g>' +
-      '<rect class="body" x="46" y="36" width="28" height="28" rx="6"/>' +
-      '<path class="canopy" d="M50 40 Q60 30 70 40 L72 58 Q60 64 48 58 Z"/>' +
-      '<circle class="lens" cx="60" cy="38" r="4"/>' +
-      '<circle class="led g" cx="28" cy="30" r="2.6"/><circle class="led g" cx="92" cy="30" r="2.6"/><circle class="led r" cx="28" cy="70" r="2.6"/><circle class="led r" cx="92" cy="70" r="2.6"/>' +
-      '<circle class="strobe" cx="60" cy="62" r="2"/></svg>';
-    var set = [
-      { y: '14%', w: '110px', dur: '34s', delay: '-6s', dy: '-40px', op: .9, tilt: '-8deg', c: '#4de3ff' },
-      { y: '32%', w: '64px', dur: '52s', delay: '-20s', dy: '30px', op: .6, tilt: '6deg', c: '#ff4fd8', rev: true },
-      { y: '58%', w: '150px', dur: '26s', delay: '-11s', dy: '-70px', op: .95, tilt: '-14deg', c: '#9dff57' },
-      { y: '8%', w: '40px', dur: '70s', delay: '-33s', dy: '20px', op: .4, tilt: '0deg', c: '#ffc14d', rev: true },
-      { y: '44%', w: '86px', dur: '44s', delay: '-2s', dy: '50px', op: .7, tilt: '10deg', c: '#b388ff' }
+    var P = [
+      { d: 'M -100 220 C 300 80, 700 420, 1100 180 S 1700 260, 1800 120', c: '#4de3ff', dash: 260, dur: 7, delay: -2 },
+      { d: 'M 1750 700 C 1300 520, 900 860, 500 640 S -50 560, -150 700', c: '#ff4fd8', dash: 200, dur: 9, delay: -5 },
+      { d: 'M -120 560 C 250 700, 650 300, 950 520 S 1500 760, 1800 500', c: '#9dff57', dash: 320, dur: 11, delay: -1 },
+      { d: 'M 1800 300 C 1400 160, 1100 140, 800 320 S 300 460, -100 380', c: '#ffc14d', dash: 180, dur: 8, delay: -6 },
+      { d: 'M -100 80 C 400 160, 600 20, 1000 100 S 1500 60, 1800 160', c: '#b388ff', dash: 150, dur: 13, delay: -3 }
     ];
-    set.forEach(function (f) {
-      var d = document.createElement('div'); d.className = 'flyer' + (f.rev ? ' rev' : '');
-      d.style.setProperty('--y', f.y); d.style.setProperty('--w', f.w); d.style.setProperty('--dur', f.dur); d.style.setProperty('--delay', f.delay);
-      d.style.setProperty('--dy', f.dy); d.style.setProperty('--op', f.op); d.style.setProperty('--tilt', f.tilt); d.style.setProperty('--neon-c', f.c);
-      d.innerHTML = QUAD; host.appendChild(d);
+    var svg = '<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">';
+    P.forEach(function (p, i) {
+      // the path length is measured after insertion; a generous placeholder keeps the first frame sane
+      svg += '<path class="tr glow" id="trg' + i + '" d="' + p.d + '" stroke="' + p.c + '" style="--dur:' + p.dur + 's;--delay:' + p.delay + 's"/>';
+      svg += '<path class="tr" id="tr' + i + '" d="' + p.d + '" stroke="' + p.c + '" style="--dur:' + p.dur + 's;--delay:' + p.delay + 's"/>';
+    });
+    host.innerHTML = svg + '</svg>';
+    P.forEach(function (p, i) {
+      ['trg', 'tr'].forEach(function (k) {
+        var el = document.getElementById(k + i), len = el.getTotalLength();
+        el.style.setProperty('--len', len); el.style.setProperty('--dash', p.dash);
+        el.setAttribute('stroke-dasharray', p.dash + ' ' + len);
+      });
     });
   })();
 
   /* ------------------------------------------------------------ demos */
   if (D.badgelists) D.badgelists.mount();
-  if (D.statics) D.statics.mount();
   function mount(id, demo) {
     var node = document.getElementById(id); if (!node || !demo) return;
     demo.mount(node); var i = scenes.indexOf(node.closest('.scene')); (demoFor[i] = demoFor[i] || []).push(demo);
@@ -130,16 +159,16 @@
     var fwd = n > cur, old = cur; cur = n;
     moving = true;
     if (old >= 0) demos(old, false);
-    scenes.forEach(function (s, i) { s.classList.toggle('near', Math.abs(i - n) <= 2); s.classList.toggle('active', i === n); });
+    scenes.forEach(function (s, i) { s.classList.toggle('near', Math.abs(i - n) <= 1); s.classList.toggle('active', i === n); });
+    trails.forEach(function (t, i) { t.style.visibility = (i >= n - 1 && i <= n) ? 'visible' : 'hidden'; });
     setFrags(n, fwd && !opts.allFrags ? 0 : frags(n).length);
-    var neon = scenes[n].getAttribute('data-neon') || '#4de3ff';
-    document.documentElement.style.setProperty('--neon', neon);
+    document.documentElement.style.setProperty('--neon', scenes[n].getAttribute('data-neon') || '#4de3ff');
     progress.style.width = ((n + 1) / scenes.length * 100) + '%';
     counter.textContent = (n + 1) + ' / ' + scenes.length;
     if (location.hash !== '#/' + (n + 1)) history.replaceState(null, '', '#/' + (n + 1));
     camera(old >= 0);
     renderNotes(); renderMenu();
-    setTimeout(function () { moving = false; demos(n, true); }, old < 0 || reduce ? 50 : 1250);
+    setTimeout(function () { moving = false; demos(n, true); }, old < 0 || reduce ? 50 : 1150);
   }
   function next() {
     if (moving) return;
@@ -175,10 +204,7 @@
     notes = txt.split(/^## /m).slice(1).map(function (p) { var nl = p.indexOf('\n'); return '<h4 style="font-size:20px;margin-top:0">' + p.slice(0, nl) + '</h4>' + md(p.slice(nl + 1)); });
     renderNotes();
   }).catch(function () { notesBody.innerHTML = '<p class="hint">SCRIPT.md could not be loaded (open the deck over http, not file://).</p>'; });
-  function renderNotes() {
-    if (!notesEl.classList.contains('open')) return;
-    notesBody.innerHTML = notes[cur] || '<p class="hint">No notes for this slide yet.</p>'; notesEl.scrollTop = 0;
-  }
+  function renderNotes() { if (!notesEl.classList.contains('open')) return; notesBody.innerHTML = notes[cur] || '<p class="hint">No notes for this slide yet.</p>'; notesEl.scrollTop = 0; }
 
   /* ------------------------------------------------------------- menu */
   var menu = document.getElementById('menu'), menuList = document.getElementById('menuList');
@@ -231,4 +257,7 @@
   layout();
   var startAt = parseInt((location.hash.match(/#\/(\d+)/) || [])[1], 10);
   go(isNaN(startAt) ? 0 : Math.min(scenes.length, Math.max(1, startAt)) - 1, { allFrags: true });
+  // fonts and images change card sizes after first paint: redraw the paths once they settle
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(); });
+  window.addEventListener('load', function () { layout(); setTimeout(layout, 600); });
 })();
