@@ -6,17 +6,22 @@
 <title>Pilots before drones — Brophy FPV Club grant pitch</title>
 <meta name="description" content="The Brophy FPV Badge Program: a 2026–27 grant pitch from the Brophy College Preparatory FPV Club. Skills, access, structure, gear.">
 <meta name="robots" content="noindex">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231f3350'/><g stroke='%23f2ece0' stroke-width='2.4' fill='none' stroke-linecap='round'><path d='M9 9l14 14M23 9L9 23'/><circle cx='9' cy='9' r='4'/><circle cx='23' cy='9' r='4'/><circle cx='9' cy='23' r='4'/><circle cx='23' cy='23' r='4'/></g></svg>">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%230a1222'/><g stroke='%234de3ff' stroke-width='2.4' fill='none' stroke-linecap='round'><path d='M9 9l14 14M23 9L9 23'/><circle cx='9' cy='9' r='4'/><circle cx='23' cy='9' r='4'/><circle cx='9' cy='23' r='4'/><circle cx='23' cy='23' r='4'/></g></svg>">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/pitch.css">
 </head>
-<body>
+<body class="show-all">
 
-<div id="stage">
+<div id="sky"></div>
+<div id="city"><div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div><div class="haze"></div></div>
+<div id="flyers"></div>
+
+<div id="world"><div id="route">
 
 <!-- 1 ================================================================= -->
-<section class="scene" data-title="Pilots before drones" data-nofrag>
-<div class="fit"><div class="slide title">
+<section class="scene" data-title="Pilots before drones" data-neon="#4de3ff" data-nofrag>
+<div class="panel title">
   <div class="eyebrow">FPV Club · Brophy College Preparatory · 2026–27</div>
   <h1>Pilots before drones.</h1>
   <p class="lede">A certification program that <b>teaches real skills</b>, <b>lowers the barrier</b> to flying, and <b>outlives its founders</b>.</p>
@@ -27,94 +32,57 @@
     <div class="stat"><div class="v">23</div><div class="l">skill badges · 4 tracks</div></div>
   </div>
   <div class="byline">Micah Tucker &amp; team</div>
-</div></div>
+</div>
 </section>
 
 <!-- 2 ================================================================= -->
-<section class="scene" data-title="Four tracks of skill">
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Four tracks of skill" data-neon="#9dff57">
+<div class="panel">
   <div class="eyebrow">Skills we want people to learn</div>
   <h2>Four tracks of skill</h2>
   <div class="tracks">
-    <div class="track frag" style="--c:var(--sky)"><div class="k">Flight</div><div class="n">7 badges</div><p>Sim hours, orbit and Split-S, line of sight, first real flight, freestyle, indoor proximity, racing.</p></div>
-    <div class="track frag" style="--c:var(--amber)"><div class="k">Build &amp; tech</div><div class="n">6 badges</div><p>Battery care, building, Betaflight, soldering, field diagnostics, tuning.</p></div>
-    <div class="track frag" style="--c:var(--green)"><div class="k">Knowledge &amp; safety</div><div class="n">5 badges</div><p>Safe flight (with the basics of airspace), electrical components, radio protocol and video, event ops and emergencies, FAA TRUST.</p></div>
-    <div class="track frag" style="--c:var(--violet)"><div class="k">Crew &amp; leadership</div><div class="n">5 badges</div><p>Spotter, cinematography and shot planning, editing, fleet steward, mentor.</p></div>
+    <div class="track frag" style="--c:#4de3ff"><svg viewBox="0 0 64 64"><path d="M12 40 L32 20 L52 40"/><circle cx="32" cy="20" r="6"/><path d="M8 48 H56"/><circle cx="12" cy="40" r="5"/><circle cx="52" cy="40" r="5"/></svg><div class="k">Flight</div><div class="n">7 badges</div><p>Sim hours, orbit and Split-S, line of sight, first real flight, freestyle, indoor proximity, racing.</p></div>
+    <div class="track frag" style="--c:#ffc14d"><svg viewBox="0 0 64 64"><path d="M14 50 L38 26"/><path d="M34 22 L42 30"/><path d="M38 14 L50 26 L44 32 L32 20 Z"/><circle cx="16" cy="48" r="4"/><path d="M46 46 H58 M52 40 V52"/></svg><div class="k">Build &amp; tech</div><div class="n">6 badges</div><p>Battery care, building, Betaflight, soldering, field diagnostics, tuning.</p></div>
+    <div class="track frag" style="--c:#5dffc3"><svg viewBox="0 0 64 64"><path d="M32 8 L52 16 V32 C52 44 42 52 32 56 C22 52 12 44 12 32 V16 Z"/><path d="M24 32 L30 38 L42 24"/></svg><div class="k">Knowledge &amp; safety</div><div class="n">5 badges</div><p>Safe flight with the basics of airspace, electrical components, radio protocol and video, event ops and emergencies, FAA TRUST.</p></div>
+    <div class="track frag" style="--c:#b388ff"><svg viewBox="0 0 64 64"><circle cx="22" cy="22" r="7"/><circle cx="44" cy="26" r="6"/><path d="M8 50 C8 38 16 34 22 34 C28 34 36 38 36 50"/><path d="M34 48 C36 40 40 38 44 38 C50 38 56 42 56 50"/></svg><div class="k">Crew &amp; leadership</div><div class="n">5 badges</div><p>Spotter, cinematography and shot planning, editing, fleet steward, mentor.</p></div>
   </div>
   <p class="closer frag">Twenty-three badges in all. A pilot is not a pilot until they can also <b>build</b>, <b>reason</b> and <b>lead</b>.</p>
-</div></div>
+</div>
 </section>
 
-<!-- 3–6: one slide per track, filled from badges.js ==================== -->
-<section class="scene" data-title="Track: Flight" data-nofrag>
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Skills · track 1 of 4</div>
-  <h2>Flight</h2>
-  <div class="badgelist" data-track="flight"></div>
-</div></div>
+<!-- 3–6 ============================================================== -->
+<section class="scene" data-title="Track: Flight" data-neon="#4de3ff" data-nofrag>
+<div class="panel"><div class="eyebrow">Skills · track 1 of 4</div><h2>Flight</h2><div class="badgelist" data-track="flight"></div></div>
 </section>
-
-<section class="scene" data-title="Track: Build &amp; tech" data-nofrag>
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Skills · track 2 of 4</div>
-  <h2>Build &amp; tech</h2>
-  <div class="badgelist" data-track="build"></div>
-</div></div>
+<section class="scene" data-title="Track: Build &amp; tech" data-neon="#ffc14d" data-nofrag>
+<div class="panel"><div class="eyebrow">Skills · track 2 of 4</div><h2>Build &amp; tech</h2><div class="badgelist" data-track="build"></div></div>
 </section>
-
-<section class="scene" data-title="Track: Knowledge &amp; safety" data-nofrag>
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Skills · track 3 of 4</div>
-  <h2>Knowledge &amp; safety</h2>
-  <div class="badgelist" data-track="know"></div>
-</div></div>
+<section class="scene" data-title="Track: Knowledge &amp; safety" data-neon="#5dffc3" data-nofrag>
+<div class="panel"><div class="eyebrow">Skills · track 3 of 4</div><h2>Knowledge &amp; safety</h2><div class="badgelist" data-track="know"></div></div>
 </section>
-
-<section class="scene" data-title="Track: Crew &amp; leadership" data-nofrag>
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Skills · track 4 of 4</div>
-  <h2>Crew &amp; leadership</h2>
-  <div class="badgelist" data-track="crew"></div>
-</div></div>
+<section class="scene" data-title="Track: Crew &amp; leadership" data-neon="#b388ff" data-nofrag>
+<div class="panel"><div class="eyebrow">Skills · track 4 of 4</div><h2>Crew &amp; leadership</h2><div class="badgelist" data-track="crew"></div></div>
 </section>
 
 <!-- 7 ================================================================= -->
-<section class="scene" data-title="What a graduate can do" data-nofrag>
-<div class="fit"><div class="slide">
+<section class="scene" data-title="What a graduate can do" data-neon="#ff4fd8" data-nofrag>
+<div class="panel">
   <div class="eyebrow">Skills · the whole list</div>
   <h2>What a student walks away able to do</h2>
-  <div class="twocol">
-    <ul class="bul small">
-      <li>Fly a quad in acro: hover, orbit, Split-S, gaps, power loops, clean race laps</li>
-      <li>Take off, hover and land without goggles when the video dies</li>
-      <li>Build a drone from parts; solder ESCs, motors and wiring</li>
-      <li>Flash and configure Betaflight; bind a radio; set and test a failsafe</li>
-      <li>Choose motors, ESCs, props and batteries that match each other</li>
-      <li>Charge, store, inspect and dispose of LiPo batteries safely</li>
-      <li>Diagnose a drone that won't arm; swap a motor or prop in the field</li>
-    </ul>
-    <ul class="bul small">
-      <li>Tune out an oscillation with PID and filter changes</li>
-      <li>Read airspace: Class B, the 400 ft ceiling, B4UFLY, LAANC; hold FAA TRUST</li>
-      <li>Run emergency procedures: failsafe, flyaway, LiPo fire, incident report</li>
-      <li>Spot for a pilot; set up a flight zone; brief bystanders</li>
-      <li>Plan a shoot with a coach; frame a follow, orbit and reveal; set up digital video</li>
-      <li>Cut and colour-grade a clip; keep gear checked out and maintained</li>
-      <li>Teach a new member, then sign off their badges as a mentor</li>
-    </ul>
-  </div>
-</div></div>
+  <div id="carousel" class="no-nav"></div>
+  <p class="closer small">drag or use ‹ › to turn · it keeps turning on its own</p>
+</div>
 </section>
 
 <!-- 8 ================================================================= -->
-<section class="scene" data-title="Lowering the barrier to entry">
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Lowering the barrier to entry" data-neon="#5aa9ff">
+<div class="panel">
   <div class="eyebrow">Lowering the barrier to entry</div>
   <h2>Anyone can start flying today, for free</h2>
   <div class="cols">
     <ul class="bul">
       <li class="frag"><b>The sim lab.</b> Five FPV simulators in the IC, open 7:00–4:00 on school days. Tap your name, pick a sim, fly. Crashes cost nothing.</li>
-      <li class="frag"><b>No seat? Ground School.</b> 45 lessons, about 140 minutes, on the kiosk or any phone. Drills on the real transmitter; progress follows the pilot.</li>
+      <li class="frag"><b>No seat? Ground School.</b> 43 lessons on the kiosk or any phone. Drills on the real transmitter; progress follows the pilot.</li>
       <li class="frag"><b>Zero cost to the student.</b> Sim hours, lessons, quizzes and FAA TRUST are free. Club gear is shared and checked out.</li>
       <li class="frag"><b>Clear first steps.</b> Name at the kiosk → 7.5 sim hours → Safe Flight and Battery Care quizzes → build and flash a Meteor → first real flight.</li>
     </ul>
@@ -123,28 +91,28 @@
       <div id="liveStats"></div>
     </div>
   </div>
-</div></div>
+</div>
 </section>
 
 <!-- 9 ================================================================= -->
-<section class="scene" data-title="Structure that ensures learning">
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Structure that ensures learning" data-neon="#ffc14d">
+<div class="panel">
   <div class="eyebrow">Structure that ensures learning</div>
   <h2>Badges unlock gear</h2>
   <div class="cols wide-fig">
     <ul class="bul">
       <li class="frag"><b>A badge is one specific, testable skill.</b> Earn every badge in a tier and the next drone is yours to fly. "Who may fly what" is written down, not remembered.</li>
       <li class="frag"><b>Demonstration, not attendance.</b> Quiz badges: 10 questions, 80% passes, the kiosk awards them. Bench badges: checklist, photo of the work, instructor approves. Witnessed badges: a mentor watches you meet the written standard. FAA TRUST on file.</li>
-      <li class="frag"><b>The record.</b> One badge catalogue shared by kiosk and website. Every award signed by the approving instructor. Progress only moves forward. A visible board says exactly what each member can do.</li>
+      <li class="frag"><b>The record.</b> One badge catalogue shared by kiosk and website. Every award signed by the approving instructor. Progress only moves forward.</li>
     </ul>
     <div id="ladder"></div>
   </div>
-</div></div>
+</div>
 </section>
 
 <!-- 10 ================================================================ -->
-<section class="scene" data-title="Structure that ensures safety">
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Structure that ensures safety" data-neon="#ff7a45">
+<div class="panel">
   <div class="eyebrow">Structure that ensures safety</div>
   <h2>A written safety standard</h2>
   <div class="cols">
@@ -161,17 +129,17 @@
       <div class="fig"><img src="assets/img/posters/03-map-tier0.jpg" alt="Tier 0 trail map poster" class="tall"><div class="cap">Tier 0 trail map · hangs above the sims</div></div>
     </div>
   </div>
-</div></div>
+</div>
 </section>
 
 <!-- 11 ================================================================ -->
-<section class="scene" data-title="Structure that ensures sustainability">
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Structure that ensures sustainability" data-neon="#5dffc3">
+<div class="panel">
   <div class="eyebrow">Structure that ensures sustainability</div>
   <h2>Built to outlive its founders</h2>
   <div class="cols">
     <ul class="bul">
-      <li class="frag"><b>Skills normally graduate with the seniors.</b> Here they are badges, and 80% of the club is underclassmen.</li>
+      <li class="frag"><b>Skills normally graduate with the seniors.</b> Here they are badges, and the club is heavily underclassmen, gaining members every week.</li>
       <li class="frag"><b>Mentor:</b> coach a new member through two badges, then sign off the badges you hold, with officer approval. The program produces its own teachers every year.</li>
       <li class="frag"><b>Everything is written down:</b> the badge sheet, the safety rules, seven printed posters, a website that runs itself with live lab numbers.</li>
       <li class="frag"><b>Kiosk and lessons</b> are already built and maintained by students.</li>
@@ -182,122 +150,84 @@
       <div class="fig"><img src="assets/img/web/web-flightschool.jpg" alt="Flight School on the website"><div class="cap">Flight School · all 23 badges, on any phone</div></div>
     </div>
   </div>
-</div></div>
+</div>
 </section>
 
 <!-- 12 ================================================================ -->
-<section class="scene" data-title="The equipment we want">
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Equipment</div>
-  <h2>The equipment we want, and why</h2>
-  <table class="gear">
-    <tr class="frag"><td class="q">2 ×</td><td class="what">Meteor 75 Pro trainers</td><td class="why">Sub-250 g, ducted, safe indoors, cheap to crash. Eight students are waiting with no drone to share.</td></tr>
-    <tr class="frag"><td class="q">2 + 2</td><td class="what">DJI N3 goggles + RadioMaster Pocket radios</td><td class="why">Two pilots training or flying at once. About an eight-year life: the part the school buys once.</td></tr>
-    <tr class="frag"><td class="q">1 (+ spare)</td><td class="what">Pavo 20 Pro cinewhoop</td><td class="why">Ducted camera ship with a D-log camera: the drone Best of Brophy is shot on, and the top-tier test airframe.</td></tr>
-    <tr class="frag"><td class="q">kit</td><td class="what">Batteries, 1S charger, spare frames, props, motors, smoke stopper, screwdrivers, backpack</td><td class="why">Crashes become repairs, not purchases. Members fix what they break: that is a badge, not a chore.</td></tr>
-  </table>
-  <p class="closer frag">Everything under 250 g except the camera tier. Airframes last about 4 years, pilot kit about 8. Many essentials donated by members. <b>Est. $1,975 of the $2,000 ask, one time.</b></p>
-</div></div>
+<section class="scene" data-title="Other yields for Brophy" data-neon="#ff4fd8">
+<div class="panel">
+  <div class="eyebrow">Other yields for Brophy</div>
+  <h2>What else the school gets</h2>
+  <div class="yields">
+    <div class="yield frag"><svg viewBox="0 0 64 64"><rect x="8" y="16" width="36" height="32" rx="4"/><path d="M44 28 L58 20 V44 L44 36"/><circle cx="20" cy="30" r="4"/></svg><h4>Best of Brophy</h4><p>Short aerial clips through the year for games, dances and clubs, cut into two showcase films a year for admissions, assemblies and social media.</p></div>
+    <div class="yield frag"><svg viewBox="0 0 64 64"><path d="M10 50 L22 20 L34 50"/><path d="M15 40 H29"/><path d="M40 20 H56 M40 32 H56 M40 44 H52"/></svg><h4>Already in the field</h4><p>We have already flown and filmed at a couple of school events this year, with a spotter and the event protocol. The pipeline exists; this scales it.</p></div>
+    <div class="yield frag"><svg viewBox="0 0 64 64"><path d="M8 48 C8 30 20 22 32 22 C44 22 56 30 56 48"/><path d="M16 48 V36 M48 48 V36"/><circle cx="32" cy="36" r="5"/><path d="M26 56 H38"/></svg><h4>Community-period races</h4><p>The pep rally, "Written in the Stars": a live FPV race on the scoreboard. The same course runs as a core-programming and a lunch race, flown only by Racing-badge pilots.</p></div>
+    <div class="yield frag"><svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="22"/><path d="M32 10 V54 M10 32 H54"/><path d="M18 18 C26 28 38 28 46 18 M18 46 C26 36 38 36 46 46"/></svg><h4>Interest is already here</h4><p>Stuco, the racing club, admissions and sports have asked for footage. Teams get clips they can use the same week.</p></div>
+    <div class="yield frag"><svg viewBox="0 0 64 64"><rect x="10" y="12" width="44" height="40" rx="4"/><path d="M18 24 H46 M18 32 H46 M18 40 H34"/></svg><h4>A model other clubs can copy</h4><p>Badge → gate → gear is not drone-specific. Robotics, shop, A/V: any club with expensive tools and a safety question can run the same system.</p></div>
+  </div>
+</div>
 </section>
 
 <!-- 13 ================================================================ -->
-<section class="scene" data-title="Budget at a glance" data-nofrag>
-<div class="fit"><div class="slide">
-  <div class="eyebrow">Equipment · the numbers</div>
-  <h2>Budget at a glance</h2>
-  <div class="cols even">
-    <table class="budget">
-      <tr><td>Pilot kit: 2 goggles, 2 radios</td><td>$682</td></tr>
-      <tr><td>Trainers: 2 × Meteor 75 Pro</td><td>$480</td></tr>
-      <tr><td>Camera ship: Pavo 20 Pro + spare frame/motors</td><td>$470</td></tr>
-      <tr><td>Power: trainer and 3S batteries, charger</td><td>$114</td></tr>
-      <tr><td>Spares and tools</td><td>$66</td></tr>
-      <tr><td>Pep-rally race course (priced with Stuco)</td><td>~$50</td></tr>
-      <tr class="total"><td>Estimated with tax and shipping</td><td>≈ $1,975</td></tr>
-    </table>
-    <ul class="bul">
-      <li>Fits inside the $2,000 ask with about $50 of headroom</li>
-      <li>Prices fluctuate: the final list and cost follow the proposal's parts list. Meet with Micah when ordering.</li>
-      <li>A one-time build-out. We are not planning to be back next year asking for the same thing.</li>
-      <li>The full line-by-line list, with a reason beside every item, is in the proposal.</li>
-    </ul>
+<section class="scene" data-title="The equipment we want" data-neon="#4de3ff">
+<div class="panel">
+  <div class="eyebrow">Equipment</div>
+  <h2>The equipment we want, and why</h2>
+  <div class="gear">
+    <div class="item frag"><div class="pic"><img src="assets/img/gear/goggles.png" alt="DJI Goggles N3"></div><div class="q">2 ×</div><h4>DJI N3 goggles</h4><p>Two pilots can train or fly at once. About an eight-year life: the part the school buys once.</p></div>
+    <div class="item frag"><div class="pic"><img src="assets/img/gear/radio.png" alt="RadioMaster Pocket"></div><div class="q">2 ×</div><h4>RadioMaster Pocket</h4><p>One radio each for the sim and the air. Lasts as long as the goggles.</p></div>
+    <div class="item frag"><div class="pic"><img src="assets/img/gear/meteor.png" alt="BetaFPV Meteor 75 Pro"></div><div class="q">2 ×</div><h4>Meteor 75 Pro trainers</h4><p>Sub-250 g, ducted, safe indoors, cheap to crash. Eight students are waiting with no drone to share.</p></div>
+    <div class="item frag"><div class="pic"><img src="assets/img/gear/pavo.png" alt="BetaFPV Pavo 20 Pro"></div><div class="q">1 ×</div><h4>Pavo 20 Pro cinewhoop</h4><p>Ducted camera ship with a D-log camera: the drone Best of Brophy is shot on, and the Tier 2 test airframe.</p></div>
   </div>
-</div></div>
+  <div class="accessories frag"><b>Accessories:</b> batteries, a 1S charger, frames, props, electronics, a smoke stopper, screwdrivers, a backpack. Crashes become repairs, not purchases. <span class="tbd">Still TBD on what we can afford.</span></div>
+  <p class="closer">Everything under 250 g except the camera tier. Airframes last about 4 years, the pilot kit about 8. Many essentials donated by members.</p>
+</div>
 </section>
 
 <!-- 14 ================================================================ -->
-<section class="scene" data-title="What it produces">
-<div class="fit"><div class="slide">
-  <div class="eyebrow">What it produces</div>
-  <h2>Footage and events the school can use</h2>
-  <div class="cols even">
-    <div>
-      <h3>Best of Brophy · organization videos</h3>
-      <ul class="bul">
-        <li class="frag">Short aerial clips through the year: games, dances, clubs, a campus flythrough</li>
-        <li class="frag">Two showcase films a year for admissions, assemblies and social media</li>
-        <li class="frag">Shot director, editor, and every graduated pilot as a shooter</li>
-        <li class="frag">Interest already expressed by Stuco, the racing club, admissions and sports</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Community-period races</h3>
-      <ul class="bul">
-        <li class="frag">Pep rally, "Written in the Stars": a live FPV race, pilot's-eye feed on the scoreboard</li>
-        <li class="frag">A core-programming period race and a lunch race on the same course</li>
-        <li class="frag">LED-lit Meteor trainers, 3D-printed gates, PVC frames</li>
-        <li class="frag">Only Racing-badge pilots fly the course; a spotter and event ops on every heat</li>
-      </ul>
-    </div>
-  </div>
-</div></div>
+<section class="scene" data-title="Budget at a glance" data-neon="#9dff57" data-nofrag>
+<div class="panel">
+  <div class="eyebrow">Equipment · the numbers</div>
+  <h2>Budget at a glance</h2>
+  <div class="budget" id="budget"></div>
+  <p class="closer">A one-time build-out inside the $2,000 ask. Prices fluctuate: the final order follows the proposal's parts list, with Micah in the room. The full line-by-line list, with a reason beside every item, is in the proposal.</p>
+</div>
 </section>
 
 <!-- 15 ================================================================ -->
-<section class="scene" data-title="The ask">
-<div class="fit"><div class="slide">
-  <div class="eyebrow">The ask</div>
-  <h2>$2,000, tied to three projects</h2>
-  <div class="cols">
-    <ul class="bul">
-      <li class="frag"><b>The ask:</b> $2,000 for the badge program's training fleet, Best of Brophy and the community-period races. Not open-ended drone purchases.</li>
-      <li class="frag"><b>Timeline:</b> Mr. Reasy → Mr. Burr for Student Activities sign-off → Stuco on the rally slot → the fall assembly pitch with recruiting.</li>
-      <li class="frag"><b>Once funded:</b> order the fleet, publish the badge sheet, certify current pilots as mentors, start every new member on Simulator Flight.</li>
-      <li class="frag"><b>Open items:</b> damage and liability policy, officer roles beyond President, early access to the event calendar.</li>
-    </ul>
-    <div class="qrs">
-      <div class="qr big hero"><img src="assets/qr/proposal.svg" alt="QR: the official proposal"><div class="t">The official proposal</div><div class="u">full badge list · budget · timeline</div></div>
-      <div class="qr"><img src="assets/qr/dashboard.svg" alt="QR: live dashboard"><div class="t">Live lab dashboard</div></div>
-      <div class="qr"><img src="assets/qr/flightschool.svg" alt="QR: Flight School"><div class="t">Flight School</div></div>
-    </div>
-  </div>
-</div></div>
+<section class="scene" data-title="Timeline" data-neon="#5aa9ff" data-nofrag>
+<div class="panel">
+  <div class="eyebrow">Timeline</div>
+  <h2>Where this goes next</h2>
+  <div class="timeline" id="timeline"></div>
+  <p class="closer">Once funded: order the fleet, publish the badge sheet, certify current pilots as mentors, and start every new member on Simulator Flight.</p>
+</div>
 </section>
 
 <!-- 16 ================================================================ -->
-<section class="scene" data-title="Thank you" data-nofrag>
-<div class="fit"><div class="slide">
+<section class="scene" data-title="Thank you" data-neon="#ff4fd8" data-nofrag>
+<div class="panel">
   <div class="eyebrow">Thank you</div>
   <h2>Questions?</h2>
-  <div class="qrs six">
-    <div class="qr hero"><img src="assets/qr/proposal.svg" alt="QR: proposal"><div class="t">Proposal</div><div class="u">the official doc</div></div>
-    <div class="qr"><img src="assets/qr/deck.svg" alt="QR: this pitch"><div class="t">This pitch</div><div class="u">elmagoct.github.io/brophy-fpv-grant</div></div>
-    <div class="qr"><img src="assets/qr/dashboard.svg" alt="QR: dashboard"><div class="t">Lab dashboard</div><div class="u">hours · leaderboard</div></div>
-    <div class="qr"><img src="assets/qr/flightschool.svg" alt="QR: Flight School"><div class="t">Flight School</div><div class="u">all 23 badges</div></div>
-    <div class="qr"><img src="assets/qr/posters.svg" alt="QR: posters"><div class="t">The posters</div><div class="u">print-ready PDFs</div></div>
-    <div class="qr"><img src="assets/qr/playlist.svg" alt="QR: playlist"><div class="t">Flight reel</div><div class="u">YouTube playlist</div></div>
+  <div class="qrs">
+    <div class="qr hero"><img src="assets/qr/proposal.png" alt="QR: proposal"><div class="t">Proposal</div><div class="u">the official doc</div></div>
+    <div class="qr"><img src="assets/qr/deck.png" alt="QR: this pitch"><div class="t">This pitch</div><div class="u">elmagoct.github.io/brophy-fpv-grant</div></div>
+    <div class="qr"><img src="assets/qr/dashboard.png" alt="QR: dashboard"><div class="t">Lab dashboard</div><div class="u">hours · leaderboard</div></div>
+    <div class="qr"><img src="assets/qr/flightschool.png" alt="QR: Flight School"><div class="t">Flight School</div><div class="u">all 23 badges</div></div>
+    <div class="qr"><img src="assets/qr/posters.png" alt="QR: posters"><div class="t">The posters</div><div class="u">print-ready PDFs</div></div>
+    <div class="qr"><img src="assets/qr/playlist.png" alt="QR: playlist"><div class="t">Flight reel</div><div class="u">YouTube playlist</div></div>
   </div>
   <p class="closer">FPV Club · Brophy College Preparatory · Micah Tucker &amp; team · mtucker27@brophybroncos.org</p>
-</div></div>
+</div>
 </section>
 
-</div><!-- /stage -->
+</div></div><!-- /route /world -->
 
-<div id="chrome">
+<div id="hud">
   <div id="progress"><i></i></div>
   <div id="footer"><span>Pilots before drones · FPV Club · Brophy</span><span id="counter">1 / 16</span></div>
 </div>
-<div id="hint"><kbd>←</kbd><kbd>→</kbd> or click &nbsp; <kbd>N</kbd> notes &nbsp; <kbd>G</kbd> all slides &nbsp; <kbd>A</kbd> show all bullets &nbsp; <kbd>F</kbd> fullscreen</div>
+<div id="hint"><kbd>←</kbd><kbd>→</kbd> or click &nbsp; <kbd>N</kbd> notes &nbsp; <kbd>G</kbd> all slides &nbsp; <kbd>A</kbd> one bullet at a time &nbsp; <kbd>F</kbd> fullscreen</div>
 
 <aside id="notes" class="no-nav"><h3>Speaker notes</h3><div id="notesBody"><p class="hint">Loading SCRIPT.md…</p></div></aside>
 <div id="menu" class="no-nav"><div><h3>Slides</h3><div class="list" id="menuList"></div></div></div>

@@ -5,8 +5,11 @@ proposal. Plain HTML/CSS/JS, no build step, served by GitHub Pages:
 
 **https://elmagoct.github.io/brophy-fpv-grant/**
 
-A plain 16-slide show in the order skills → access → structure → gear → ask,
-with live renderings of the club's real badge catalogue and lab numbers.
+Sixteen slides in the order skills → access → structure → yields → gear →
+timeline, presented as a night fly-through: the city is the background, each
+slide is a floating neon sign on a winding 3D route, a pulsing trail links sign
+to sign, and the camera flies between them. Live renderings of the club's real
+badge catalogue and lab numbers; product photos on the equipment slide.
 
 ## Presenting
 
@@ -14,12 +17,13 @@ with live renderings of the club's real badge catalogue and lab numbers.
 |---|---|
 | **→ Space Enter** | next bullet, then next slide (also: tap/click the right 78 % of the screen, or swipe) |
 | **← Backspace** | previous bullet / slide (click the left 22 %) |
-| **A** | toggle "all bullets at once" instead of one per click |
+| **A** | toggle bullets one per click (default is all at once) |
 | **N** | speaker notes beside the deck, read live from `SCRIPT.md` |
 | **G** | the slide list: jump to any slide |
 | **F** | fullscreen · **1–9** jump · **Home / End** |
 
-The URL carries the slide (`#/7`), so a reload lands on the same slide.
+The URL carries the slide (`#/7`), so a reload lands on the same slide. Slide 7
+is a 3D ring of skill cards: drag it, use the arrows, or let it turn.
 
 The deck works offline except for the live lab numbers on slides 1 and 8
 (it falls back to a dated snapshot and says so). Fonts are

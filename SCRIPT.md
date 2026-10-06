@@ -9,6 +9,7 @@ talk over a finished slide.
 Everything in `[EDIT: …]` is a place to put something true and personal. The
 committee remembers names, dates and one honest moment, not adjectives. Sixteen
 slides at about 40 seconds each is a ten-minute talk with time for questions.
+All bullets show at once by default; press **A** to reveal them one click at a time.
 
 Numbers to keep straight: the proposal says 27 or 28 badges; since 2026-10-06
 the catalogue has **23** (Flight 7, Build 6, Knowledge 5, Crew 5). The title slide's hours figure is live from the lab;
@@ -93,12 +94,11 @@ And the one that makes this a program: Mentor. Coach a new member through their 
 > Click → next slide
 
 ## 7. What a graduate can do
+_The ring keeps turning on its own. Drag it or use the arrows to stop on a card._
 
-_No clicks. Let them read it for a few seconds before you talk._
+This is the whole list, fourteen cards. A student who finishes this can build and repair a drone, fly it in acro, land it blind, charge batteries safely, read the airspace over Phoenix, run an emergency, spot for a pilot, plan a shoot with a coach, cut a clip, and teach the next person.
 
-This is the whole list, in plain words. A student who finishes this can build and repair a drone, fly it in acro, land it blind, charge batteries safely, read the airspace over Phoenix, run an emergency, spot for a pilot, plan a shoot with a coach, cut a clip, and teach the next person.
-
-[EDIT: pick the two or three lines that mean the most to you and say why.]
+[EDIT: stop the ring on the two or three cards that mean the most to you and say why.]
 
 > Click → next slide
 
@@ -142,7 +142,7 @@ Badges are earned by doing, not by showing up. Knowledge badges are ten-question
 
 There is one badge catalogue shared by the kiosk and the website. Every award is signed by the instructor who approved it, progress only moves forward, and the board is visible to anyone.
 
-On the right: the four tiers, animating one pilot climbing from the sim to Event Pilot.
+On the right: the four tiers, animating one pilot climbing from the sim, to the tiny whoop, to the cine whoop, to Event Pilot.
 
 Why each badge exists, if asked: Battery Care because LiPos are the real fire risk. Safe Flight carries airspace because we're next to Sky Harbor. Spotter because the pilot can't see around themselves. Mentor because the program has to train its own replacements and someone has to be allowed to sign off.
 
@@ -186,7 +186,7 @@ This is the slide I care about most. [EDIT: say why. "I'm a senior; this has to 
 
 > Click: skills graduate
 
-Normally skills graduate with the seniors. Here they're badges, and [EDIT: confirm] eighty percent of the club is underclassmen.
+Normally skills graduate with the seniors. Here they're badges, and the club is heavily underclassmen: we gain members every week. [EDIT: the actual count today, and how many joined this month.]
 
 > Click: Mentor
 
@@ -206,102 +206,65 @@ And recruiting is built in: the fall assembly pitch, a pep-rally race the whole 
 
 > Click → next slide
 
-## 12. The equipment we want
+## 12. Other yields for Brophy
+Beyond the pilots themselves, here's what else the school gets. Five tiles, no clicks.
 
-I said the money was the smallest part. Here's what it buys, with the reason beside each line.
+Best of Brophy: short aerial clips through the year, cut into two showcase films a year for admissions, assemblies and social media.
+
+We're already in the field. [EDIT: name the two events you have flown and filmed at this year, and who asked for the footage.] The pipeline exists; the grant scales it.
+
+Community-period races: the pep rally, "Written in the Stars," with the pilot's-eye feed on the scoreboard, and the same course as a core-programming and a lunch race. Only pilots with the Racing badge fly it, with a spotter and event ops on every heat.
+
+Interest is already here: Stuco, the racing club, admissions and sports have asked. [EDIT: confirm who, specifically.]
+
+And the one to remember: badge, gate, gear is a model any club with expensive tools and a safety question can copy.
+
+> Click → next slide
+
+## 13. The equipment we want
+Here's what the money buys, with the reason beside each.
+
+> Click: goggles
+
+Two sets of DJI N3 goggles, so two pilots can train or fly at once. About an eight-year life: this is the part the school buys once.
+
+> Click: radios
+
+Two RadioMaster Pocket radios, one each for the sim and the air. They last as long as the goggles.
 
 > Click: trainers
 
-Two Meteor 75 Pro trainers. Under 250 grams, ducted, safe indoors, cheap to crash. Eight students are waiting with no drone to share.
-
-> Click: goggles and radios
-
-Two sets of goggles and radios, so two pilots can train or fly at once. These last about eight years; it's the part the school buys once.
+Two Meteor 75 Pro trainers. Under 250 grams, ducted, safe indoors, and cheap to crash. Eight students are waiting with no drone to share.
 
 > Click: the camera ship
 
-One Pavo 20 Pro with a spare: a ducted camera drone with a flat-profile camera we can grade. It's what Best of Brophy is shot on and the top-tier test airframe.
+One Pavo 20 Pro: a ducted camera drone with a flat-profile camera we can grade. It's what Best of Brophy is shot on and the Tier 2 test airframe.
 
-> Click: the kit
+> Click: accessories
 
-Batteries, a charger, spare frames, props and motors, a smoke stopper, screwdrivers, a backpack. Crashes become repair lessons, not purchase orders.
+Accessories: batteries, a charger, frames, props, electronics, a smoke stopper, tools, a backpack. Crashes become repair lessons instead of purchase orders. Exactly how much of this we can afford is still to be decided once the main items are priced.
 
-> Click: the closing line
-
-Everything under 250 grams except the camera tier. Airframes about four years, pilot kit about eight. [EDIT: who is donating what.] About nineteen seventy-five of the two thousand, one time.
+Everything under 250 grams except the camera tier. Airframes about four years, the pilot kit about eight. [EDIT: who is donating what.]
 
 > Click → next slide
 
-## 13. Budget at a glance
+## 14. Budget at a glance
+_No clicks; the bars draw themselves._
 
-_No clicks._
-
-The line items: pilot kit, trainers, camera ship, power, spares and tools, and roughly fifty dollars for the rally course once Stuco confirms the format. About nineteen seventy-five with tax and shipping, inside the ask with a little headroom. Prices move, so the final order follows the proposal's parts list, with me in the room.
-
-> Click → next slide
-
-## 14. What it produces
-
-Two outputs, kept short on purpose.
-
-> Click: clips
-
-Best of Brophy: short aerial clips through the year for games, dances, clubs, a campus flythrough.
-
-> Click: showcase films
-
-Cut into two showcase films a year for admissions, assemblies and social media.
-
-> Click: who shoots
-
-A shot director, an editor, and every graduated pilot as a shooter.
-
-> Click: interest
-
-[EDIT: name who has asked: Stuco, the racing club, admissions, which sports.]
-
-> Click: pep rally
-
-On the right: a live FPV race at the pep rally, "Written in the Stars," with the pilot's-eye feed on the scoreboard.
-
-> Click: more races
-
-The same course runs as a core-programming period race and a lunch race, so the equipment is useful whether or not the rally slot comes through.
-
-> Click: the course
-
-LED-lit trainers, 3D-printed gates, PVC frames.
-
-> Click: who flies
-
-Only pilots holding the Racing badge fly the course, with a spotter and event ops on every heat.
+Pilot kit, trainers, camera ship, accessories and the race course. Parts come to about seventeen hundred and sixty dollars; with tax and shipping, roughly eighteen seventy, inside the ask with about a hundred and thirty of headroom that goes to electronics and spares. Prices move, so the final order follows the proposal's parts list, with me in the room.
 
 > Click → next slide
 
-## 15. The ask
+## 15. Timeline
+_The line lights up node by node; let it finish before you talk._
 
-> Click: the ask
+The proposal is written and reviewed. Next it goes to Mr. Reasy, then to Mr. Burr for Student Activities sign-off, then to Student Council about the rally slot, and then we pitch it at the fall assembly alongside recruiting.
 
-Two thousand dollars, tied to the badge program's training fleet, Best of Brophy, and the community-period races. Not open-ended drone purchases.
-
-> Click: timeline
-
-Mr. Reasy, then Mr. Burr for Student Activities sign-off, then Student Council about the rally, then the fall assembly pitch alongside recruiting.
-
-> Click: once funded
-
-Once funded: order the fleet, publish the badge sheet, certify our current pilots as the first mentors, and start every new member on Simulator Flight.
-
-> Click: open items
-
-Open items we know about: the damage and liability policy, officer roles beyond President, and early access to the event calendar so shoots can be scheduled.
-
-The big QR code is the official proposal: the full badge list, the budget line by line, the timeline.
+Once it's funded: order the fleet, publish the badge sheet, certify our current pilots as the first mentors, and start every new member on Simulator Flight.
 
 > Click → next slide
 
 ## 16. Thank you
-
 Thank you. Pilots before drones.
 
 Everything is on the screen: the proposal, this deck, the live dashboard, Flight School, the posters, the flight reel.
