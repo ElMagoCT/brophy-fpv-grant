@@ -68,7 +68,7 @@
         r.innerHTML = '<div class="pilot">' + QUAD + '</div><div class="tn">Tier ' + t.n + '</div><div class="nm">' + t.name + '</div><div class="gear">' + t.gear + '</div>';
         var ch = el('div', 'chips');
         bs.forEach(function (b) { var c = el('div', 'chip', '<i></i>' + b.name + '<span class="ck">✓</span>'); c.style.setProperty('--tc', TC[b.track]); ch.appendChild(c); chips.push({ el: c, tier: r }); });
-        if (!bs.length) ['Every Tier 2 badge held', 'FAA TRUST on file', 'A spotter at every flight', 'Cleared to fly for a crowd'].forEach(function (txt) {
+        if (!bs.length) ['All 8 Tier 2 badges', 'FAA TRUST on file', 'Spotter beside you', 'Cleared for crowds'].forEach(function (txt) {
           var c = el('div', 'chip el', '<i></i>' + txt + '<span class="ck">✓</span>'); c.style.setProperty('--tc', t.color); ch.appendChild(c); chips.push({ el: c, tier: r });
         });
         r.appendChild(ch);
