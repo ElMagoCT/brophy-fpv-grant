@@ -12,11 +12,11 @@ with live renderings of the club's real badge catalogue and lab numbers.
 
 | Key | Does |
 |---|---|
-| **→ Space Enter** | next bullet, then next sheet (also: tap/click the right 78 % of the screen, or swipe) |
-| **← Backspace** | previous bullet / sheet (click the left 22 %) |
+| **→ Space Enter** | next bullet, then next slide (also: tap/click the right 78 % of the screen, or swipe) |
+| **← Backspace** | previous bullet / slide (click the left 22 %) |
 | **A** | toggle "all bullets at once" instead of one per click |
 | **N** | speaker notes beside the deck, read live from `SCRIPT.md` |
-| **G** | the flight plan: jump to any sheet |
+| **G** | the slide list: jump to any slide |
 | **F** | fullscreen · **1–9** jump · **Home / End** |
 
 The URL carries the slide (`#/7`), so a reload lands on the same slide.
