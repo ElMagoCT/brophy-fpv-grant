@@ -1,0 +1,293 @@
+FPV CLUB GRANT PITCH — SLIDE MENU
+Every slide we could make, grouped by theme. Pick, reorder, cut. Each entry is
+75 words or fewer: the bullets a slide would carry, not the script.
+
+A suggested spine in your preferred order is at the bottom.
+
+====================================================================
+A. OPENERS
+====================================================================
+
+A1  Title — "Pilots before drones"
+    - FPV Club · Brophy · 2026–27 · $2,000 one-time ask
+    - A certification program that teaches real skills, lowers the barrier
+      to flying, and outlives its founders
+    - Presenters' names and roles
+
+A2  Why this, in one slide
+    - Students want to fly and film for the school and have no path to it
+    - Drones are cheap; knowing how to fly them safely is not
+    - We built the free half already (sim lab, lessons, website)
+    - The grant buys the hardware the training path needs
+
+A3  The club in one sentence
+    - Who we are, how many members, how often we meet
+    - Shared community-period meetings with RC Club (15 a year)
+    - Student-run: officers, examiners, mentors
+
+====================================================================
+B. SKILLS WE WANT PEOPLE TO LEARN
+====================================================================
+
+B1  Four tracks of skill
+    - Flight · Build & tech · Knowledge & safety · Crew & leadership
+    - Seven badges in each, 28 total
+    - A pilot is not a pilot until they can also build, reason and lead
+
+B2  Hands: build & tech
+    - Soldering an ESC and motors, heat-shrink, continuity checks
+    - Betaflight: flashing, motor order, binding a radio
+    - Field repair: swap a motor or prop, diagnose "won't arm"
+    - Electrical components: why a 3-inch and a 5-inch need different parts
+    - Transfers straight to robotics and engineering
+
+B3  Judgment: knowledge & safety
+    - Battery care: LiPo charging, storage voltage, puffed packs, disposal
+    - Airspace: Class B over Phoenix, B4UFLY, LAANC, the 400 ft ceiling
+    - Emergency procedures: failsafe, flyaway, LiPo fire, incident report
+    - FAA TRUST: the federal baseline, free, for every flying member
+
+B4  Stick skills: flight
+    - Simulator hours, orbit, Split-S, gaps, finishing a race
+    - Line of sight: hover and land without goggles
+    - Tiny whoop → freestyle → indoor proximity → racing
+    - Every flight skill is tested in the sim before it costs a battery
+
+B5  Working with people: crew & leadership
+    - Spotter: the pilot can't see around themselves
+    - Shot planning with a coach or moderator
+    - Event ops: flight zones, briefing bystanders, call-outs
+    - Mentor, Examiner, Fleet Steward: running the program itself
+
+B6  Media skills
+    - Cinematography: follow, orbit, reveal, deliver one usable clip
+    - Video systems: binding O4, resolution, D-log vs normal, ND filters
+    - Editing: cut and grade a 30–60 s clip
+    - Tuning: fix an oscillation with before/after footage
+
+B7  What a graduate can do
+    - Build and repair a drone from parts
+    - Fly a camera drone at a school event with a spotter, legally
+    - Teach a new member and sign off their badges
+    - Hand a coach a finished clip
+
+====================================================================
+C. LOWERING THE BARRIER TO ENTRY
+====================================================================
+
+C1  The sim lab: fly today, for free
+    - Five FPV simulators in the IC, open 7:00–4:00 on school days
+    - Open to anyone: tap your name, pick a sim, fly
+    - Crashes cost nothing; nobody needs to own anything
+    - Live numbers: hours flown, pilots logged, flying this week
+
+C2  No seat? Ground School
+    - 45 lessons, about 140 minutes, on the kiosk or any phone
+    - Lessons, drills on the real transmitter, quizzes
+    - Progress follows the pilot between kiosk and website
+    - A new member has something to do on day one
+
+C3  Zero cost to the student
+    - Sim hours, lessons, quizzes, FAA TRUST: all free
+    - Club gear is shared and checked out; no personal drone needed
+    - Study materials and mentoring are run by students
+
+C4  Clear first steps
+    - Add your name at the kiosk → Simulator Flight (7.5 h)
+    - Safe Flight and Battery Care quizzes
+    - Build and flash a Meteor at the bench
+    - Then your first real flight: the gate opens
+
+C5  Recruiting moments
+    - Fall assembly pitch alongside recruitment
+    - A pep-rally race where the whole school sees FPV through the goggles
+    - Posters above the sims and a public website anyone can open
+
+====================================================================
+D. STRUCTURE THAT ENSURES LEARNING
+====================================================================
+
+D1  Badges unlock gear
+    - A badge is one specific, testable skill
+    - Earn every badge in a tier and the next drone is yours to fly
+    - Four tiers: Simulator → Tiny Whoop → Full-size → Event Pilot
+    - "Who may fly what" is written down, not remembered
+
+D2  Demonstration, not attendance
+    - Quiz badges: 10 questions, 80% passes, the kiosk awards them
+    - Bench badges: checklist on the kiosk, photo of the work, instructor approves
+    - Witnessed badges: an examiner watches you meet the written standard
+    - Official: FAA TRUST certificate on file
+
+D3  The tier ladder (visual)
+    - Tier 0 Simulator: 7 badges → Gate 1
+    - Tier 1 Tiny Whoop (Meteor 75 Pro): 6 badges → Gate 2
+    - Tier 2 Full-size (Pavo 20 Pro, Cinebot 35, 5-inch): 8 badges → Gate 3
+    - Tier 3 Event Pilot: fly for a crowd, with a spotter
+    - Seven electives on the side
+
+D4  Every badge has a "why"
+    - Battery Care because LiPos are the real fire risk
+    - Airspace because Brophy is near Sky Harbor
+    - Spotter because FPV pilots can't see around themselves
+    - Mentor because the program must train its replacements
+
+D5  The record
+    - One badge catalogue shared by kiosk and website
+    - Every award signed by the approving instructor
+    - Progress only moves forward; a badge can't be lost in a drawer
+    - A visible board that says exactly what each member can do
+
+D6  Why sim first
+    - 7.5 hours before the first real flight
+    - Proficient Flight is sim-only on purpose: it gates the first battery
+    - Line of Sight: land it when the video dies
+    - Each gate sits where the next mistake starts to cost money or safety
+
+====================================================================
+E. STRUCTURE THAT ENSURES SAFETY
+====================================================================
+
+E1  A written safety standard
+    - Brophy FPV safe-flight rules, published and quizzed
+    - Nothing over 250 g until the top tier
+    - No real drone before Safe Flight, Battery Care and FAA TRUST
+
+E2  Flying near people
+    - Event Pilot requires Spotter, Event Ops, Cinematography, TRUST
+    - Flight zone set up and bystanders briefed before every event flight
+    - Ducted cinewhoops for anything near a crowd
+
+E3  Batteries and fire
+    - Balance charging, storage voltage, puffed-pack checks, disposal
+    - Smoke stopper on every first power-up
+    - LiPo fire procedure drilled, not read
+
+E4  Airspace and the law
+    - Phoenix Sky Harbor Class B: check B4UFLY, request LAANC when needed
+    - FAA TRUST for recreational flyers; Part 107 study group for those who want more
+    - Incident reporting written the same day
+
+E5  Who may fly what, who may sign off
+    - Tiers answer "who may fly what"
+    - Examiner badge answers "who may sign off"
+    - Officer approval on top; Fleet Steward tracks the gear
+    - Open item: damage and liability policy
+
+====================================================================
+F. STRUCTURE THAT ENSURES SUSTAINABILITY
+====================================================================
+
+F1  Built to outlive its founders
+    - Skills normally graduate with the seniors; here they're badges
+    - Mentor: coach a new member through two badges
+    - Examiner: defined by badges held plus officer approval
+    - The program produces its own teachers every year
+
+F2  Everything is written down
+    - Badge sheet, safety rules, seven printed posters
+    - A website that runs itself, with live lab numbers
+    - Kiosk and lessons already built and maintained by students
+
+F3  Gear bought to last
+    - Goggles and radios about 8 years; airframes about 4
+    - Spares, frames and props in the budget: crashes are repairs, not purchases
+    - One-time build-out, not a recurring ask
+
+F4  Accountability for school gear
+    - Fleet Steward runs check-in/out and a maintenance log each semester
+    - Where the gear lives, who holds the key
+    - Officer roles: VP, Secretary, Equipment Manager, Safety Officer
+
+F5  A model other clubs can copy
+    - Badge → gate → gear is not drone-specific
+    - Robotics, shop, A/V: any club with expensive tools and a safety question
+    - The documents and website are reusable
+
+====================================================================
+G. EQUIPMENT
+====================================================================
+
+G1  The equipment we want (one slide, with why)
+    - 2 × Meteor 75 Pro trainers: sub-250 g, safe indoors, cheap to crash
+    - 2 × DJI N3 goggles + 2 × RadioMaster Pocket: two pilots at once, 8-year life
+    - 1 × Pavo 20 Pro: ducted camera ship, D-log footage for Best of Brophy
+    - Batteries, charger, spare frames/props/motors, smoke stopper, tools
+    - Est. $1,975 of the $2,000 ask
+
+G2  Why this fleet and not another
+    - Trainers first: eight students waiting, no drone to share
+    - Everything under 250 g except the camera tier
+    - Spares make members fix what they break (a badge, not a chore)
+    - Many essentials donated by members
+
+G3  Budget at a glance
+    - Pilot kit $682 · trainers $480 · camera ship + spare $470
+    - Power $114 · spares and tools $66 · rally course ~$50
+    - Headroom ~$50 under $2,000; prices fluctuate, meet with Micah when ordering
+
+====================================================================
+H. WHAT IT PRODUCES (keep short)
+====================================================================
+
+H1  Best of Brophy
+    - Short aerial clips through the year for games, dances, clubs
+    - Two showcase films a year for admissions, assemblies, social media
+    - Shot director, editor, all graduated pilots as shooters
+
+H2  Pep-rally race, "Written in the Stars"
+    - Live FPV race, pilot's-eye feed on the scoreboard
+    - LED-lit Meteor trainers, 3D-printed gates, PVC frames
+    - Pending Stuco and Student Activities; falls back to a lunch race
+
+H3  What Brophy gets
+    - A standing program with a safety standard and a pipeline of pilots
+    - Footage every organization can use
+    - A recruiting moment and a model other clubs can copy
+
+====================================================================
+I. THE ASK AND CLOSE
+====================================================================
+
+I1  The ask
+    - $2,000, tied to the badge program, Best of Brophy and the rally race
+    - Not open-ended drone purchases
+
+I2  Timeline and next steps
+    - Mr. Reasy → Mr. Burr (Student Activities) → Stuco → fall assembly pitch
+    - Once funded: order, publish the badge sheet, certify examiners,
+      start new members on Simulator Flight
+    - Open items: liability policy, officer roles, event calendar access
+
+I3  Links and QR codes
+    - Official proposal, live dashboard, Flight School, posters, flight reel,
+      this deck
+
+I4  Thank you / questions
+
+====================================================================
+SUGGESTED SPINE (your order: skills → access → structure → gear → ask)
+====================================================================
+
+ 1. A1  Title
+ 2. A2  Why this, in one slide
+ 3. B1  Four tracks of skill
+ 4. B2  Hands: build & tech
+ 5. B3  Judgment: knowledge & safety
+ 6. B5  Working with people            (B4, B6, B7 optional)
+ 7. C1  The sim lab: fly today, for free
+ 8. C2  No seat? Ground School
+ 9. C4  Clear first steps              (C3 fold in as a line)
+10. D1  Badges unlock gear
+11. D2  Demonstration, not attendance
+12. D3  The tier ladder
+13. E1  A written safety standard      (fold E2–E4 into bullets)
+14. E5  Who may fly what, who may sign off
+15. F1  Built to outlive its founders
+16. F3  Gear bought to last            (F2, F4, F5 optional)
+17. G1  The equipment we want
+18. H3  What Brophy gets               (H1, H2 as one line each)
+19. I1  The ask + I2 next steps
+20. I3  QR codes / thank you
+
+About 18–20 slides at 30–40 seconds each is a 10–12 minute talk.
