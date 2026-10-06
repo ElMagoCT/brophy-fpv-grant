@@ -116,7 +116,9 @@ body.disarmed #quad .prop{animation-play-state:paused}
 .scene.active,.scene.leaving{visibility:visible}
 .scene.active{z-index:2}
 .scene.leaving{z-index:3; pointer-events:none}
-.fit{width:1280px; height:760px; flex:none; transform:scale(var(--fit)); transform-origin:center; transform-style:preserve-3d}
+.fit{width:1280px; height:760px; flex:none; transform:scale(var(--fit)); transform-origin:center; transform-style:preserve-3d;
+  /* negative margins shrink the LAYOUT box to the scaled size, so the grid can centre it on small screens */
+  margin:calc((var(--fit) - 1) * 380px) calc((var(--fit) - 1) * 640px)}
 .sheet{
   width:1280px; height:760px; position:relative; overflow:hidden;
   background-color:var(--paper);
@@ -445,7 +447,8 @@ body.show-all .frag{opacity:1; transform:none}
 .note b{color:var(--ink)}
 
 /* phones: let the sheet scale, hide the hotkey hint */
-@media (max-width:700px){ #osdBR{display:none} #notes{width:92vw} }
+@media (max-width:1000px){ #osdBR{display:none} }
+@media (max-width:700px){ #notes{width:92vw} }
 
 #rotate{display:none; position:fixed; inset:0; z-index:80; background:var(--goggle); color:var(--osd); place-items:center; text-align:center; font-family:var(--font-mono); font-size:44px}
 #rotate span{display:block; font-size:13px; letter-spacing:3px; text-transform:uppercase; color:var(--osd-dim); margin-top:10px}
