@@ -5,8 +5,8 @@ proposal. Plain HTML/CSS/JS, no build step, served by GitHub Pages:
 
 **https://elmagoct.github.io/brophy-fpv-grant/**
 
-It is a deck, not a document: fourteen "sheets" you fly through, FPV-goggle
-style, with live renderings of the club's real badge catalogue and lab numbers.
+A plain 16-slide show in the order skills → access → structure → gear → ask,
+with live renderings of the club's real badge catalogue and lab numbers.
 
 ## Presenting
 
@@ -19,19 +19,18 @@ style, with live renderings of the club's real badge catalogue and lab numbers.
 | **G** | the flight plan: jump to any sheet |
 | **F** | fullscreen · **1–9** jump · **Home / End** |
 
-The screen starts **DISARMED**; tap or press anything to arm. The URL carries the
-sheet (`#/7`), so a reload lands on the same sheet, already armed.
+The URL carries the slide (`#/7`), so a reload lands on the same slide.
 
-The deck works offline except for two things: the live lab numbers on sheet 2
-(it falls back to a dated snapshot and says so) and nothing else. Fonts are
+The deck works offline except for the live lab numbers on slides 1 and 8
+(it falls back to a dated snapshot and says so). Fonts are
 self-hosted. Open it over http, not `file://`, or the notes cannot load.
 
 ## Editing
 
-- **Words** are in `index.html`. Each `<section class="scene">` is one sheet;
-  `data-title` names it in the OSD, rail and menu. `<li class="frag">` reveals one
-  click at a time; a sheet with `data-nofrag` has no click-stops.
-- **Script** is `SCRIPT.md`: one `## n. Title` per sheet, in order; `> ` lines are
+- **Words** are in `index.html`. Each `<section class="scene">` is one slide;
+  `data-title` names it in the slide list (G). `<li class="frag">` reveals one
+  click at a time; a slide with `data-nofrag` has no click-stops. Slides 3–6 are filled from `badges.js` by `demos.js`.
+- **Script** is `SCRIPT.md`: one `## n. Title` per slide, in order; `> ` lines are
   click cues, `[EDIT: …]` marks are highlighted in the notes panel.
 - **Badge data** is `assets/js/badges.js`, a copy of the website's
   `flightschool/badges.js`. When the website's catalogue changes, copy it over.
@@ -59,3 +58,11 @@ Tier numbering is the club's: simulator is Tier 0.
 ```bash
 cd brophy-fpv-grant && python3 -m http.server 8795
 ```
+
+## Other copies
+
+`SLIDE-MENU.txt` is the planning list the current order came from.
+`tools/build-doc.py` regenerates `slides/pitch-doc.html` (the Google Doc
+version) from `index.html` + `SCRIPT.md`. `slides/pitch.pptx` and
+`tools/build-slides.js` still describe the earlier 14-sheet version; rebuild
+them only if a PowerPoint copy of this order is needed.
