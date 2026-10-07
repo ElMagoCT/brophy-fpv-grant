@@ -15,12 +15,16 @@
 
   /* ----------------------------------------------------------- route */
   var DX = 1900, YS = [0, -320, 260, -140, 380, -300, 120, -380, 240, -200, 360, -60, -340, 300, -220, 160, -120];
-  var pos = scenes.map(function (s, i) { return { x: i * DX, y: YS[i % YS.length], z: (i % 3 === 1 ? -220 : i % 3 === 2 ? 160 : 0) }; });
+  var pos = scenes.map(function (s, i) { return { x: i * DX, y: YS[i % YS.length], z: 0 }; });
   var fit = 1;
   var cityLayers = Array.prototype.slice.call(document.querySelectorAll('#city .layer'));
-  var trails = scenes.slice(0, -1).map(function (s) {
-    var t = document.createElement('div'); t.className = 'trail';
-    t.style.setProperty('--tc', s.getAttribute('data-neon') || '#4de3ff'); route.appendChild(t); return t;
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var trails = scenes.slice(0, -1).map(function (s, i) {
+    var t = document.createElementNS(SVGNS, 'svg'); t.setAttribute('class', 'link');
+    var c1 = s.getAttribute('data-neon') || '#4de3ff', c2 = scenes[i + 1].getAttribute('data-neon') || '#4de3ff';
+    t.innerHTML = '<defs><linearGradient id="lg' + i + '" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="' + c1 + '"/><stop offset="1" stop-color="' + c2 + '"/></linearGradient></defs>' +
+      '<path class="lg" stroke="url(#lg' + i + ')"/><path class="ll" stroke="url(#lg' + i + ')"/><path class="lp"/>';
+    route.insertBefore(t, route.firstChild); return t;
   });
   var paths = scenes.map(function (s) {
     var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'path'); svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
@@ -30,10 +34,12 @@
   function offs(c, s) { var x = 0, y = 0, e = c; while (e && e !== s) { x += e.offsetLeft; y += e.offsetTop; e = e.offsetParent; } return { x: x, y: y }; }
   function centre(c, s) { var o = offs(c, s); return { x: o.x + c.offsetWidth / 2, y: o.y + c.offsetHeight / 2 }; }
   // Catmull-Rom through the points -> cubic Béziers: one continuous, fluid line
-  function smooth(pts) {
+  // the outer lead points only shape the tangents; the line is drawn from..to
+  function smooth(pts, from, to) {
     if (pts.length < 2) return '';
-    var d = 'M' + pts[0].x.toFixed(1) + ',' + pts[0].y.toFixed(1);
-    for (var i = 0; i < pts.length - 1; i++) {
+    from = from || 0; to = to == null ? pts.length - 1 : to;
+    var d = 'M' + pts[from].x.toFixed(1) + ',' + pts[from].y.toFixed(1);
+    for (var i = from; i < to; i++) {
       var p0 = pts[i - 1] || pts[i], p1 = pts[i], p2 = pts[i + 1], p3 = pts[i + 2] || p2;
       var c1x = p1.x + (p2.x - p0.x) / 6, c1y = p1.y + (p2.y - p0.y) / 6, c2x = p2.x - (p3.x - p1.x) / 6, c2y = p2.y - (p3.y - p1.y) / 6;
       d += ' C' + c1x.toFixed(1) + ',' + c1y.toFixed(1) + ' ' + c2x.toFixed(1) + ',' + c2y.toFixed(1) + ' ' + p2.x.toFixed(1) + ',' + p2.y.toFixed(1);
@@ -58,8 +64,9 @@
       });
       var entry = { x: -60, y: pts[0].y }, exit = { x: W + 60, y: pts[pts.length - 1].y };
       // lead in and out along the direction of travel so the curve arrives flat at the edges
-      var all = (i > 0 ? [{ x: -260, y: entry.y }, entry] : []).concat(pts, i < scenes.length - 1 ? [exit, { x: W + 260, y: exit.y }] : []);
-      var d = smooth(all);
+      var lead = i > 0, tail = i < scenes.length - 1;
+      var all = (lead ? [{ x: -260, y: entry.y }, entry] : []).concat(pts, tail ? [exit, { x: W + 260, y: exit.y }] : []);
+      var d = smooth(all, lead ? 1 : 0, tail ? all.length - 2 : all.length - 1);
       ['pg', 'pl', 'pulse'].forEach(function (k) { paths[i].querySelector('.' + k).setAttribute('d', d); });
       Array.prototype.forEach.call(paths[i].querySelectorAll('circle'), function (c) { c.remove(); });
       pts.forEach(function (p) { var c = document.createElementNS('http://www.w3.org/2000/svg', 'circle'); c.setAttribute('cx', p.x); c.setAttribute('cy', p.y); c.setAttribute('r', 7); paths[i].appendChild(c); });
@@ -91,15 +98,25 @@
       s.style.transform = 'translate3d(' + p.x * fit + 'px,' + p.y * fit + 'px,' + p.z * fit + 'px) scale(' + (fit * (sfs[i] || 1)) + ')';
     });
     trails.forEach(function (t, i) {
-      if (Math.abs(i - base) > 2) { t.style.transform = 'translate3d(0,0,-9000px)'; return; }
-      var a = rel(i), b = rel(i + 1), ea = ends[i] || { last: { x: W + 60, y: H / 2 } }, eb = ends[i + 1] || { first: { x: -60, y: H / 2 } };
-      var ax = (a.x + ea.last.x - W / 2) * fit, ay = (a.y + ea.last.y - H / 2) * fit, az = a.z * fit;
-      var bx = (b.x + eb.first.x - W / 2) * fit, by = (b.y + eb.first.y - H / 2) * fit, bz = b.z * fit;
-      var dx = bx - ax, dy = by - ay, dz = bz - az, len = Math.sqrt(dx * dx + dy * dy + dz * dz);
-      var ry = Math.atan2(-dz, dx) * 180 / Math.PI, rz = Math.asin(dy / len) * 180 / Math.PI;
-      t.style.transform = 'translate3d(' + ax + 'px,' + ay + 'px,' + az + 'px) rotateY(' + ry + 'deg) rotateZ(' + rz + 'deg)';
-      t.style.width = len + 'px';
+      if (Math.abs(i - base) > 2) { t.style.display = 'none'; return; }
+      t.style.display = '';
+      var ea = ends[i] || { last: { x: W + 60, y: H / 2 } }, eb = ends[i + 1] || { first: { x: -60, y: H / 2 } };
+      var A = toRoute(i, ea.last), B = toRoute(i + 1, eb.first);
+      var pad = 60, x0 = Math.min(A.x, B.x) - pad, y0 = Math.min(A.y, B.y) - pad;
+      var w = Math.abs(B.x - A.x) + pad * 2, h = Math.abs(B.y - A.y) + pad * 2;
+      var ax = A.x - x0, ay = A.y - y0, bx = B.x - x0, by = B.y - y0, k = (bx - ax) * 0.5;
+      var d = 'M' + ax.toFixed(1) + ',' + ay.toFixed(1) + ' C' + (ax + k).toFixed(1) + ',' + ay.toFixed(1) + ' ' + (bx - k).toFixed(1) + ',' + by.toFixed(1) + ' ' + bx.toFixed(1) + ',' + by.toFixed(1);
+      t.setAttribute('width', w); t.setAttribute('height', h); t.setAttribute('viewBox', '0 0 ' + w + ' ' + h);
+      t.style.transform = 'translate3d(' + x0 + 'px,' + y0 + 'px,0)';
+      var g = t.querySelector('linearGradient'); g.setAttribute('x1', ax); g.setAttribute('y1', ay); g.setAttribute('x2', bx); g.setAttribute('y2', by);
+      Array.prototype.forEach.call(t.querySelectorAll('path'), function (pth) { pth.setAttribute('d', d); pth.style.strokeWidth = ''; });
+      t.style.setProperty('--sw', (fit * Math.min(sfs[i] || 1, sfs[i + 1] || 1)).toFixed(3));
     });
+  }
+  // a point in slide i's own 1280x780 coordinates -> route coordinates
+  function toRoute(i, pt) {
+    var p = rel(i), sc = fit * (sfs[i] || 1);
+    return { x: p.x * fit + (pt.x - W / 2) * sc, y: p.y * fit + (pt.y - H / 2) * sc };
   }
   function camera(animate) {
     if (cur < 0) return;
@@ -149,11 +166,9 @@
     var host = document.getElementById('flyers');
     var P = [
       { d: 'M -100 220 C 300 80, 700 420, 1100 180 S 1700 260, 1800 120', c: '#4de3ff', tail: 260, speed: 300 },
-      { d: 'M 1750 700 C 1300 520, 900 860, 500 640 S -50 560, -150 700', c: '#ff4fd8', tail: 200, speed: 220 },
       { d: 'M -120 560 C 250 700, 650 300, 950 520 S 1500 760, 1800 500', c: '#9dff57', tail: 320, speed: 260 },
-      { d: 'M 1800 300 C 1400 160, 1100 140, 800 320 S 300 460, -100 380', c: '#ffc14d', tail: 180, speed: 340 },
-      { d: 'M -100 80 C 400 160, 600 20, 1000 100 S 1500 60, 1800 160', c: '#b388ff', tail: 150, speed: 180 },
-      { d: 'M 1800 820 C 1200 700, 800 880, 400 760 S -100 820, -200 700', c: '#5dffc3', tail: 230, speed: 240 }
+      { d: 'M -100 80 C 400 160, 600 20, 1000 100 S 1500 60, 1800 160', c: '#b388ff', tail: 150, speed: 180 }
+
     ];
     var svg = '<svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">';
     P.forEach(function (p, i) {
@@ -208,7 +223,10 @@
     scenes.forEach(function (s, i) { s.classList.toggle('near', Math.abs(i - n) <= 1); s.classList.toggle('active', i === n); });
     trails.forEach(function (t, i) { t.style.visibility = (i >= n - 1 && i <= n) ? 'visible' : 'hidden'; });
     setFrags(n, fwd && !opts.allFrags ? 0 : frags(n).length);
-    document.documentElement.style.setProperty('--neon', scenes[n].getAttribute('data-neon') || '#4de3ff');
+    var rootEl = document.documentElement;
+    if (old < 0) rootEl.style.transition = 'none';           // first paint: start on the slide's colour, no fade
+    rootEl.style.setProperty('--neon', scenes[n].getAttribute('data-neon') || '#4de3ff');
+    if (old < 0) { void getComputedStyle(rootEl).getPropertyValue('--neon'); requestAnimationFrame(function () { rootEl.style.transition = ''; }); }
     progress.style.width = ((n + 1) / scenes.length * 100) + '%';
     counter.textContent = (n + 1) + ' / ' + scenes.length;
     if (location.hash !== '#/' + (n + 1)) history.replaceState(null, '', '#/' + (n + 1));

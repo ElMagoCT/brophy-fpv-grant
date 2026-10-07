@@ -56,7 +56,7 @@ a{color:inherit} button{font:inherit}
   display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:min-content; gap:26px 24px; align-content:start; align-items:start; padding:0;
 }
 .scene.near{visibility:visible}
-.scene .path{position:absolute; left:0; top:0; width:1280px; height:780px; overflow:visible; pointer-events:none; z-index:2}
+.scene .path{position:absolute; left:0; top:0; width:1280px; height:780px; overflow:visible; pointer-events:none; z-index:0}
 .scene .path .pl{fill:none; stroke:var(--neon); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; opacity:.95}
 .scene .path .pg{fill:none; stroke:var(--neon); stroke-width:16; stroke-linecap:round; stroke-linejoin:round; opacity:.18}
 .scene .path .pulse{fill:none; stroke:#fff; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40 320; animation:dash 2.2s linear infinite; opacity:.95}
@@ -74,13 +74,12 @@ a{color:inherit} button{font:inherit}
 .card .tbd{font-family:var(--font-mono); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--neon); font-style:normal; margin-left:10px}
 .card.tall{min-height:440px}
 
-/* the trail bar from one slide's last card to the next slide's first */
-.trail{position:absolute; left:0; top:0; height:10px; margin-top:-5px; transform-origin:0 50%; border-radius:5px;
-  background:linear-gradient(90deg, transparent 0 40%, #fff 50%, transparent 60% 100%) 0 0/200px 100% repeat-x, var(--tc);
-  animation:pulseBar 1.8s linear infinite; opacity:.85}
-@keyframes pulseBar{from{background-position:0 0, 0 0} to{background-position:200px 0, 0 0}}
-.trail::before,.trail::after{content:''; position:absolute; top:50%; width:20px; height:20px; margin-top:-10px; border-radius:50%; background:var(--tc)}
-.trail::before{left:-8px} .trail::after{right:-8px}
+/* the curve from one slide's exit to the next slide's entry */
+.link{position:absolute; left:0; top:0; overflow:visible; pointer-events:none}
+.link path{fill:none; stroke-linecap:round}
+.link .ll{stroke-width:calc(6px * var(--sw, 1)); opacity:.95}
+.link .lg{stroke-width:calc(16px * var(--sw, 1)); opacity:.18}
+.link .lp{stroke:#fff; stroke-width:calc(6px * var(--sw, 1)); stroke-dasharray:40 320; animation:dash 2.2s linear infinite; opacity:.95}
 
 /* ---------------------------------------------------------- typography */
 .eyebrow{font-family:var(--font-mono); font-size:16px; letter-spacing:3px; text-transform:uppercase; color:var(--neon)}
@@ -245,4 +244,4 @@ body.quiet #hint{opacity:0}
 @media (max-width:700px) and (orientation:portrait){ #rotate{display:grid} }
 @media (max-width:1000px){ #hint{display:none} }
 @media (max-width:700px){ #notes{width:92vw} }
-@media (prefers-reduced-motion: reduce){ #route, #city .layer{transition-duration:.01s} .flyer{animation:none} .trail, .scene .path .pulse{animation:none} }
+@media (prefers-reduced-motion: reduce){ #route, #city .layer{transition-duration:.01s} .link .lp, .scene .path .pulse{animation:none} }
