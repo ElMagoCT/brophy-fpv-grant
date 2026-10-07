@@ -7,12 +7,14 @@
    shadow, transforms only.
    ========================================================================== */
 
+@property --neon{syntax:'<color>'; inherits:true; initial-value:#4de3ff}
 :root{
   --bg:#070d18; --bg2:#0c1628;
   --card:#101b30; --card-2:#162440;
   --text:#f1ecdf; --soft:#b4bfd3; --dim:#7f8ca3;
   --line:rgba(241,236,223,.12);
   --neon:#4de3ff;
+  transition:--neon 1.15s cubic-bezier(.55,0,.15,1);
   --font-mono:'Share Tech Mono','Consolas',monospace;
   --font-body:'Barlow','Segoe UI',system-ui,sans-serif;
   --fit:1;
@@ -30,7 +32,7 @@ a{color:inherit} button{font:inherit}
 /* --------------------------------------------------------------- city */
 #city{position:fixed; inset:0; z-index:1; pointer-events:none; overflow:hidden}
 #city .layer{position:absolute; left:-200vw; width:500vw; bottom:0; background-repeat:repeat-x; background-position:0 100%;
-  transition:transform 1.15s cubic-bezier(.55,0,.15,1); will-change:transform}
+  transition:transform 1.15s cubic-bezier(.55,0,.15,1)}
 #city .l1{height:50vh; opacity:.55}
 #city .l2{height:62vh; opacity:.8}
 #city .l3{height:72vh}
@@ -39,34 +41,38 @@ a{color:inherit} button{font:inherit}
 /* -------------------------------------------------------- light trails */
 #flyers{position:fixed; inset:0; z-index:2; pointer-events:none; overflow:hidden}
 #flyers svg{position:absolute; inset:0; width:100%; height:100%}
-#flyers .tr{fill:none; stroke-linecap:round; stroke-width:3; opacity:.9; animation:zip var(--dur) linear infinite; animation-delay:var(--delay)}
-#flyers .tr.glow{stroke-width:9; opacity:.22}
-@keyframes zip{from{stroke-dashoffset:var(--len)} to{stroke-dashoffset:calc(-1 * var(--dash))}}
+#flyers .tr{fill:none; stroke-linecap:round; stroke-width:3}
+#flyers .tr.glow{stroke-width:10; opacity:.18}
+#flyers .hd{opacity:.95}
 
 /* -------------------------------------------------------------- world */
 #world{position:fixed; inset:0 0 44px 0; z-index:3; perspective:1600px; perspective-origin:50% 50%; overflow:hidden}
 #route{position:absolute; left:50%; top:50%; width:0; height:0; transform-style:preserve-3d;
-  transition:transform 1.15s cubic-bezier(.55,0,.15,1); will-change:transform}
+  transition:transform 1.15s cubic-bezier(.55,0,.15,1)}
+/* no will-change here: the route is ~30,000 px wide and a pre-promoted layer that
+   size exceeds the GPU texture limit, so slides silently stop painting */
 .scene{
   position:absolute; left:-640px; top:-390px; width:1280px; height:780px; visibility:hidden;
-  display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:min-content; gap:22px; align-content:start; padding:0;
+  display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:min-content; gap:26px 24px; align-content:start; align-items:start; padding:0;
 }
 .scene.near{visibility:visible}
-.scene .path{position:absolute; left:0; top:0; width:1280px; height:780px; overflow:visible; pointer-events:none; z-index:0}
-.scene .path .pl{fill:none; stroke:var(--neon); stroke-width:5; stroke-linecap:round; stroke-linejoin:round; opacity:.55}
-.scene .path .pulse{fill:none; stroke:#fff; stroke-width:5; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:28 260; animation:dash 2.4s linear infinite; opacity:.9}
-.scene .path circle{fill:var(--neon)}
-@keyframes dash{to{stroke-dashoffset:-288}}
+.scene .path{position:absolute; left:0; top:0; width:1280px; height:780px; overflow:visible; pointer-events:none; z-index:2}
+.scene .path .pl{fill:none; stroke:var(--neon); stroke-width:6; stroke-linecap:round; stroke-linejoin:round; opacity:.95}
+.scene .path .pg{fill:none; stroke:var(--neon); stroke-width:16; stroke-linecap:round; stroke-linejoin:round; opacity:.18}
+.scene .path .pulse{fill:none; stroke:#fff; stroke-width:6; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:40 320; animation:dash 2.2s linear infinite; opacity:.95}
+.scene .path circle{fill:var(--neon); stroke:#fff; stroke-width:2}
+@keyframes dash{to{stroke-dashoffset:-360}}
 .scene:not(.active) .path .pulse{animation-play-state:paused}
 
-.card{position:relative; z-index:1; background:var(--card); border:1.5px solid var(--neon); border-radius:14px; padding:22px 24px; display:flex; flex-direction:column; gap:8px; min-width:0;
+.card{position:relative; z-index:1; background:var(--card); border:1.5px solid var(--neon); border-radius:14px; padding:18px 22px; display:flex; flex-direction:column; gap:6px; min-width:0;
   box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .card::before{content:''; position:absolute; left:18px; right:18px; top:-1.5px; height:3px; background:var(--neon); border-radius:2px}
 .card.head{padding:22px 28px 20px}
 .card.head.big{padding:30px 34px 26px}
-.card.note{font-size:21px; line-height:1.4; color:var(--soft); padding:16px 24px}
-.card.note b{color:var(--text)} .card.note .dim{color:var(--dim); font-size:17px; margin-left:10px}
-.card.tall{min-height:460px}
+.card.small{padding:18px 22px} .card.small h4{font-size:27px}
+.card.quote{font-size:24px; line-height:1.35; color:var(--soft); padding:18px 26px; font-style:italic; text-align:center}
+.card .tbd{font-family:var(--font-mono); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--neon); font-style:normal; margin-left:10px}
+.card.tall{min-height:440px}
 
 /* the trail bar from one slide's last card to the next slide's first */
 .trail{position:absolute; left:0; top:0; height:10px; margin-top:-5px; transform-origin:0 50%; border-radius:5px;
@@ -78,51 +84,51 @@ a{color:inherit} button{font:inherit}
 
 /* ---------------------------------------------------------- typography */
 .eyebrow{font-family:var(--font-mono); font-size:16px; letter-spacing:3px; text-transform:uppercase; color:var(--neon)}
-h1{margin:0; font-size:104px; line-height:.98; letter-spacing:-2px; font-weight:700}
+h1{margin:0; font-size:98px; line-height:.98; letter-spacing:-2px; font-weight:700}
 h2{margin:0; font-size:48px; line-height:1.05; letter-spacing:-.5px; font-weight:700}
-h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
+h4{margin:0; font-size:28px; line-height:1.1; font-weight:700}
 .card p{margin:0; font-size:20px; line-height:1.38; color:var(--soft)}
 .card p b{color:var(--text)}
-.lede{margin:0; font-size:30px; line-height:1.3; color:var(--soft); max-width:1050px}
+.lede{margin:0; font-size:28px; line-height:1.3; color:var(--soft)}
 .lede b{color:var(--text)}
 
 .frag{opacity:0; transform:translateY(8px); transition:opacity .3s ease, transform .3s ease}
 .frag.on,body.show-all .frag{opacity:1; transform:none}
 
 /* stats (1) */
-.card.stat{padding:20px 22px 16px}
-.stat .v{font-family:var(--font-mono); font-size:52px; line-height:1; color:var(--neon)}
+.card.stat{padding:16px 20px 14px}
+.stat .v{font-family:var(--font-mono); font-size:50px; line-height:1; color:var(--neon)}
 .stat .v small{font-size:26px; margin-left:3px}
 .stat .l{font-family:var(--font-mono); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--dim); margin-top:6px}
 
 /* figures */
 .card.fig{padding:0; overflow:hidden; gap:0}
 .card.fig::before{display:none}
-.card.fig img{display:block; width:100%; height:100%; min-height:200px; object-fit:cover; object-position:top; flex:1}
+.card.fig img{display:block; width:100%; height:100%; min-height:170px; max-height:260px; object-fit:cover; object-position:top; flex:1}
 .card.fig .cap{font-family:var(--font-mono); font-size:12.5px; letter-spacing:2px; text-transform:uppercase; color:var(--dim); padding:9px 14px; border-top:1px solid var(--line)}
 
 /* tracks (2) */
 .card.track{border-color:var(--c)} .card.track::before{background:var(--c)}
-.card.track svg{width:56px; height:56px; fill:none; stroke:var(--c); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; margin-bottom:4px}
-.card.track .k{font-size:30px; font-weight:700; line-height:1.05; color:var(--c)}
+.card.track svg{width:50px; height:50px; fill:none; stroke:var(--c); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; margin-bottom:4px}
+.card.track .k{font-size:28px; font-weight:700; line-height:1.05; color:var(--c)}
 .card.track .n{font-family:var(--font-mono); font-size:13px; letter-spacing:2.5px; text-transform:uppercase; color:var(--dim)}
 
 /* badge cards (3–6) */
-.card.badge{grid-column:span 6; padding:16px 20px 14px; display:grid; grid-template-columns:1fr auto; gap:3px 14px; align-items:baseline; border-color:var(--c)}
+.card.badge{padding:14px 20px 12px; display:grid; grid-template-columns:1fr auto; gap:2px 14px; align-items:baseline; border-color:var(--c)}
 .card.badge::before{background:var(--c)}
-.card.badge .n{font-size:26px; font-weight:700; line-height:1.1}
+.card.badge .n{font-size:25px; font-weight:700; line-height:1.1}
 .card.badge .t{font-family:var(--font-mono); font-size:12.5px; letter-spacing:2px; text-transform:uppercase; color:var(--tier); white-space:nowrap}
 .card.badge .d{grid-column:1/3; font-size:19px; line-height:1.3; color:var(--text)}
 .card.badge .w{grid-column:1/3; font-size:16px; line-height:1.3; color:var(--soft); font-style:italic}
 
 /* carousel (7) */
-#carousel{position:relative; height:520px; perspective:1300px; perspective-origin:50% 42%}
+#carousel{position:relative; height:440px; perspective:1300px; perspective-origin:50% 45%}
 #carousel .ring{position:absolute; left:50%; top:52%; width:0; height:0; transform-style:preserve-3d; will-change:transform}
-#carousel .card.sk{position:absolute; left:-170px; top:-180px; width:340px; height:340px; padding:22px 22px 20px; border-color:var(--c); backface-visibility:hidden; gap:10px}
+#carousel .card.sk{position:absolute; left:-150px; top:-120px; width:300px; height:220px; padding:20px 22px 18px; border-color:var(--c); backface-visibility:hidden; gap:10px}
 #carousel .card.sk::before{background:var(--c)}
 #carousel .card.sk .k{font-family:var(--font-mono); font-size:12px; letter-spacing:2.5px; text-transform:uppercase; color:var(--c)}
 #carousel .card.sk .n{font-size:15px; font-family:var(--font-mono); color:var(--dim); margin-top:auto}
-#carousel .card.sk h4{font-size:27px}
+#carousel .card.sk h4{font-size:28px}
 #carousel .card.sk p{font-size:18px}
 #carousel .card.sk svg{width:44px; height:44px; fill:none; stroke:var(--c); stroke-width:3; stroke-linecap:round; stroke-linejoin:round}
 #carousel .arrow{position:absolute; top:50%; width:58px; height:58px; margin-top:-29px; border-radius:50%; border:1.5px solid var(--neon); background:var(--card); color:var(--neon); font-size:34px; line-height:54px; text-align:center; cursor:pointer; z-index:5}
@@ -157,14 +163,14 @@ h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
 /* yields (12) */
 .card.banner{flex-direction:row; align-items:center; gap:22px; padding:18px 26px}
 .card.banner svg,.card.yield svg{width:52px; height:52px; fill:none; stroke:var(--neon); stroke-width:3; stroke-linecap:round; stroke-linejoin:round; flex:none}
-.card.banner h4{font-size:28px; margin-bottom:4px}
+.card.banner h4{font-size:28px}
 
 /* gear (13) */
 .card.item{padding:0 0 18px; gap:6px}
-.card.item .pic{width:100%; aspect-ratio:1.15; background:#fff; border-radius:12px 12px 0 0; overflow:hidden}
+.card.item .pic{width:100%; aspect-ratio:1.2; background:#fff; border-radius:12px 12px 0 0; overflow:hidden}
 .card.item .pic img{width:100%; height:100%; object-fit:cover; display:block}
 .card.item .q{font-family:var(--font-mono); font-size:14px; letter-spacing:2px; color:var(--neon); padding:12px 20px 0}
-.card.item h4{padding:0 20px; font-size:23px}
+.card.item h4{padding:0 20px 2px; font-size:24px}
 .card.item p{padding:0 20px; font-size:17px}
 .card.accessories{font-size:20px; line-height:1.4; color:var(--soft); display:block}
 .card.accessories b{color:var(--text)} .card.accessories .tbd{font-family:var(--font-mono); font-size:13px; letter-spacing:2px; text-transform:uppercase; color:var(--neon); margin-left:8px}
@@ -172,8 +178,8 @@ h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
 
 /* budget (14) */
 .budget{display:flex; flex-direction:column; gap:14px}
-.bar{display:grid; grid-template-columns:340px 1fr 130px; align-items:center; gap:18px; font-size:22px}
-.bar .lab{font-weight:600} .bar .lab small{display:block; font-size:14px; color:var(--dim); font-weight:400}
+.bar{display:grid; grid-template-columns:260px 1fr 130px; align-items:center; gap:18px; font-size:24px}
+.bar .lab{font-weight:600}
 .bar .track{display:block; height:30px; border-radius:6px; background:rgba(255,255,255,.06); border:1px solid var(--line); overflow:hidden}
 .bar .fill{display:block; height:100%; width:var(--w); background:var(--neon); border-radius:6px; transform-origin:left; animation:grow 1s cubic-bezier(.2,.7,.2,1) both}
 .bar.tbd .fill{background:repeating-linear-gradient(45deg, var(--neon) 0 8px, transparent 8px 16px); opacity:.7}
@@ -182,7 +188,7 @@ h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
 @keyframes grow{from{transform:scaleX(0)} to{transform:scaleX(1)}}
 
 /* timeline (15) */
-.timeline{position:relative; display:grid; grid-template-columns:repeat(9,1fr); align-items:center; height:420px}
+.timeline{position:relative; display:grid; grid-template-columns:repeat(9,1fr); align-items:center; height:400px}
 .timeline::before{content:''; position:absolute; left:3%; right:3%; top:50%; height:4px; margin-top:-2px; background:rgba(255,255,255,.12); border-radius:2px}
 .timeline .line{position:absolute; left:3%; top:50%; height:4px; margin-top:-2px; background:var(--neon); border-radius:2px; width:var(--w,0%); transition:width 1.2s cubic-bezier(.3,.6,.2,1)}
 .tnode{position:relative; height:100%}
@@ -192,7 +198,7 @@ h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
 .tnode .lab{position:absolute; left:50%; width:150px; margin-left:-75px; text-align:center}
 .tnode .lab .k{font-family:var(--font-mono); font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--dim)}
 .tnode.done .lab .k{color:var(--neon)}
-.tnode .lab h4{font-size:19px; line-height:1.15; margin:4px 0}
+.tnode .lab h4{font-size:21px; line-height:1.15; margin:4px 0}
 .tnode:not(.done) .lab h4{color:var(--soft)}
 .tnode .lab p{margin:0; font-size:13.5px; line-height:1.3; color:var(--dim)}
 .tnode:nth-child(odd) .lab{bottom:calc(50% + 28px)} .tnode:nth-child(even) .lab{top:calc(50% + 28px)}
@@ -200,7 +206,7 @@ h4{margin:0; font-size:26px; line-height:1.1; font-weight:700}
 .tnode:nth-child(odd) .stem{bottom:50%; height:24px} .tnode:nth-child(even) .stem{top:50%; height:24px}
 
 /* QR (16) */
-.card.qr{text-align:center; background:#fff; color:#1f3350; padding:14px 10px 12px; gap:4px}
+.card.qr{text-align:center; background:#fff; color:#1f3350; padding:12px 10px 10px; gap:4px}
 .card.qr::before{display:none}
 .card.qr img{width:100%; display:block; margin:0 auto; image-rendering:pixelated}
 .card.qr .t{font-weight:700; font-size:17px; margin-top:6px}
