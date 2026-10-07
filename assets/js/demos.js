@@ -99,18 +99,27 @@
       ['crew', 'Cut and keep', 'M14 14 L50 50 M50 14 L14 50 M14 50 m-4 0 a4 4 0 1 0 8 0 M50 50 m-4 0 a4 4 0 1 0 8 0'],
       ['crew', 'Teach the next class', 'M22 22 m-7 0 a7 7 0 1 0 14 0 a7 7 0 1 0 -14 0 M8 50 C8 38 16 34 22 34 C28 34 36 38 36 50 M44 26 m-6 0 a6 6 0 1 0 12 0 M34 48 C36 40 40 38 44 38 C50 38 56 42 56 50']
     ];
-    var N = SKILLS.length, R = 720, SPEED = 0.45;
+    // two decks of seven; the lower deck is offset half a card so the rows stagger
+    var DECKS = 2, PER = Math.ceil(SKILLS.length / DECKS), R = 360, SPEED = 0.45 * 0.7, rings = [];
     function build() {
-      root.innerHTML = ''; ring = el('div', 'ring');
-      SKILLS.forEach(function (s, i) {
-        var c = el('div', 'card sk', '<svg viewBox="0 0 64 64"><path d="' + s[2] + '"/></svg><div class="k">' + FS.TRACK[s[0]] + '</div><h4>' + s[1] + '</h4><div class="n">' + (i + 1) + ' / ' + N + '</div>');
-        c.style.setProperty('--c', TC[s[0]]); c.style.transform = 'rotateY(' + (i * 360 / N) + 'deg) translateZ(' + R + 'px)'; ring.appendChild(c);
-      });
-      root.appendChild(ring);
-      var l = el('div', 'arrow l', '‹'), r = el('div', 'arrow r', '›');
-      l.addEventListener('click', function (e) { e.stopPropagation(); vel = 0; angle += 360 / N; idle = 0; });
-      r.addEventListener('click', function (e) { e.stopPropagation(); vel = 0; angle -= 360 / N; idle = 0; });
-      root.appendChild(l); root.appendChild(r);
+      root.innerHTML = '';
+      for (var d = 0; d < DECKS; d++) {
+        var r = el('div', 'ring deck' + d);
+        SKILLS.slice(d * PER, (d + 1) * PER).forEach(function (s, k) {
+          var i = d * PER + k;
+          var c = el('div', 'card sk', '<svg viewBox="0 0 64 64"><path d="' + s[2] + '"/></svg><div class="k">' + FS.TRACK[s[0]] + '</div><h4>' + s[1] + '</h4>');
+          c.style.setProperty('--c', TC[s[0]]);
+          c.style.transform = 'rotateY(' + (k * 360 / PER + (d ? 180 / PER : 0)) + 'deg) translateZ(' + R + 'px)';
+          r.appendChild(c);
+        });
+        root.appendChild(r); rings.push(r);
+      }
+      ring = rings[0];
+      rings.forEach(function (r) { r.style.transform = 'translateZ(-' + R + 'px) rotateY(0deg)'; });
+      var l = el('div', 'arrow l', '\u2039'), rr = el('div', 'arrow r', '\u203A');
+      l.addEventListener('click', function (e) { e.stopPropagation(); vel = 0; angle += 360 / PER; idle = 0; });
+      rr.addEventListener('click', function (e) { e.stopPropagation(); vel = 0; angle -= 360 / PER; idle = 0; });
+      root.appendChild(l); root.appendChild(rr);
       root.addEventListener('pointerdown', function (e) { dragging = true; lastX = e.clientX; vel = 0; root.setPointerCapture(e.pointerId); });
       root.addEventListener('pointermove', function (e) { if (!dragging) return; var dx = e.clientX - lastX; lastX = e.clientX; angle += dx * 0.25; vel = dx * 0.25; idle = 0; });
       root.addEventListener('pointerup', function () { dragging = false; }); root.addEventListener('pointercancel', function () { dragging = false; });
@@ -119,7 +128,8 @@
     function tick(ts) {
       var dt = Math.min(40, ts - last || 16) / 16.7; last = ts; idle += dt;
       if (!dragging) { if (Math.abs(vel) > 0.05) { angle += vel * dt; vel *= Math.pow(0.94, dt); } else if (idle > 150) angle -= SPEED * dt; }
-      ring.style.transform = 'translateZ(-' + R + 'px) rotateY(' + angle + 'deg)';
+      var t = 'translateZ(-' + R + 'px) rotateY(' + angle + 'deg)';
+      for (var d = 0; d < rings.length; d++) rings[d].style.transform = t;
       raf = requestAnimationFrame(tick);
     }
     // the ring turns from page load, so it is already moving when the slide arrives
