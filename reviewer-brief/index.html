@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brophy UAV Flight Lab — How It Works</title>
+<style>
+@font-face{font-family:Barlow;font-weight:400;src:url(img/barlow-400.woff2) format('woff2')}
+@font-face{font-family:Barlow;font-weight:500;src:url(img/barlow-500.woff2) format('woff2')}
+@font-face{font-family:Barlow;font-weight:600;src:url(img/barlow-600.woff2) format('woff2')}
+@font-face{font-family:Mono;src:url(img/share-tech-mono-400.woff2) format('woff2')}
+@font-face{font-family:Sketch;font-weight:700;src:url(img/cabin-sketch-700.woff2) format('woff2')}
+:root{--paper:#f6f1e7;--card:#fff;--ink:#22344f;--ink2:#4d5f78;--rule:#cfc6b4;--rust:#b4541f;--sky:#2f6d9e;--violet:#6a4fa0;--green:#2f6b45;--amber:#a87314}
+@page{size:letter;margin:0}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#fff}
+body{font:400 10.2pt/1.38 Barlow,sans-serif;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.page{width:8.5in;height:11in;padding:.5in .55in .45in;position:relative;overflow:hidden;page-break-after:always;background:var(--paper)}
+.page:last-child{page-break-after:auto}
+.foot{position:absolute;left:.55in;right:.55in;bottom:.25in;display:flex;justify-content:space-between;font:8pt Mono,monospace;letter-spacing:.08em;color:var(--ink2);text-transform:uppercase}
+.kicker{font:8.5pt Mono,monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--rust)}
+h1{font:700 30pt/1 Sketch,serif;margin:.05in 0 .08in}
+h1 em{font-style:normal;color:var(--rust)}
+h2{font:600 15pt/1.15 Barlow;margin:0 0 .06in;display:flex;align-items:baseline;gap:.12in}
+h2 .n{font:10pt Mono;color:var(--rust);letter-spacing:.1em}
+h3{font:600 10.6pt/1.25 Barlow;margin:0 0 .03in}
+p{margin:0 0 .07in}
+.lede{font-size:11.4pt;line-height:1.42;max-width:6.9in;color:var(--ink)}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:.08in;margin:.16in 0 .18in}
+.stat{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:.07in .1in}
+.stat b{display:block;font:600 19pt/1 Barlow;color:var(--ink)}
+.stat span{font:7.6pt Mono;letter-spacing:.06em;text-transform:uppercase;color:var(--ink2)}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:.1in .12in}
+.cols{display:grid;gap:.13in}
+.c2{grid-template-columns:1fr 1fr}.c3{grid-template-columns:1fr 1fr 1fr}
+ul{list-style:none}
+li{position:relative;padding-left:.15in;margin:0 0 .045in}
+li::before{content:"";position:absolute;left:.02in;top:.075in;width:.055in;height:.055in;background:var(--rust);transform:rotate(45deg)}
+li b{font-weight:600}
+figure{margin:0}
+figure img{display:block;width:100%;border:1px solid var(--rule);border-radius:4px}
+figcaption{font:7.8pt/1.3 Mono;letter-spacing:.03em;color:var(--ink2);margin-top:.04in}
+.why{border-left:3px solid var(--rust);background:#fbf7ef;padding:.07in .12in;margin:.05in 0 0;font-size:9.8pt}
+.why b{color:var(--rust);font:8pt Mono;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.02in}
+.sec{margin-top:.17in}
+/* tiers */
+.ladder{display:grid;grid-template-columns:repeat(4,1fr);gap:.07in;margin:.06in 0 .1in}
+.tier{background:var(--card);border:1px solid var(--rule);border-top:4px solid var(--c);border-radius:4px;padding:.07in .09in;font-size:8.8pt;line-height:1.3}
+.tier .t{font:8pt Mono;letter-spacing:.1em;color:var(--c);text-transform:uppercase}
+.tier .nm{font:600 11.2pt Barlow;display:block;margin:.01in 0 .02in}
+.tier .g{color:var(--ink2);font-size:8.4pt;display:block;margin-bottom:.04in}
+.tier .cp{display:block;margin-top:.05in;padding-top:.04in;border-top:1px dashed var(--rule);font-size:8.4pt}
+.tier .cp i{font-style:normal;font:7.6pt Mono;color:var(--rust);letter-spacing:.06em}
+.ways{display:grid;grid-template-columns:repeat(3,1fr);gap:.08in}
+.way{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:.08in .1in;font-size:9.4pt}
+.way .tag{font:8pt Mono;letter-spacing:.12em;color:var(--rust);text-transform:uppercase}
+table{width:100%;border-collapse:collapse;font-size:9.2pt;background:var(--card);border:1px solid var(--rule)}
+th,td{text-align:left;vertical-align:top;padding:.05in .08in;border-bottom:1px solid #e6dfd1}
+th{font:7.8pt Mono;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);background:#efe8da;font-weight:400}
+td:first-child{font-weight:600;white-space:nowrap}
+tr:last-child td{border-bottom:0}
+.flow{display:flex;align-items:stretch;gap:0;margin:.06in 0 .02in}
+.flow div{flex:1;background:var(--card);border:1px solid var(--rule);padding:.06in .08in;font-size:8.8pt;line-height:1.28;position:relative}
+.flow div+div{margin-left:.14in}
+.flow div+div::before{content:"\2192";position:absolute;left:-.13in;top:50%;transform:translateY(-50%);color:var(--rust);font-weight:600}
+.p2{font-size:9.7pt;line-height:1.34}.p2 li{margin-bottom:.03in}.p2 .way{font-size:9pt}
+.flow b{display:block;font:7.8pt Mono;letter-spacing:.08em;color:var(--rust);text-transform:uppercase}
+</style>
+</head>
+<body>
+
+<!-- ============================ PAGE 1 ============================ -->
+<section class="page">
+  <div class="kicker">Brophy UAV · FPV Club grant · For reviewers</div>
+  <h1>How the Flight Lab <em>teaches</em></h1>
+  <p class="lede">The club's two simulator kiosks, its badge path, and the tools mentors use to run it all
+  form one system. Its job is to make the first flight easy and every step after it
+  small, visible and checkable. This brief covers how the system works and why that helps students learn.
+  It doesn't cover what they learn.</p>
+
+  <div class="stats">
+    <div class="stat"><b>38</b><span>pilots signed up</span></div>
+    <div class="stat"><b>105 h</b><span>flown in the sims</span></div>
+    <div class="stat"><b>18</b><span>flew in the last 7 days</span></div>
+    <div class="stat"><b>20 + 4</b><span>badges + bonus badges</span></div>
+    <div class="stat"><b>43</b><span>lessons · ~2.7 h total</span></div>
+  </div>
+
+  <h2><span class="n">01</span>The kiosk: nothing between a student and a first flight</h2>
+  <div class="cols" style="grid-template-columns:1.32fr 1fr;align-items:start">
+    <figure>
+      <img src="img/kiosk-home.jpg" alt="Kiosk home screen">
+      <figcaption>The kiosk home screen. Left: who's flying, their hours and their place on the badge path.
+      Centre: the five simulators and the Ground School lessons. Right: this week's hours board and recent achievements.</figcaption>
+    </figure>
+    <div>
+      <ul>
+        <li><b>Walk up and fly.</b> Students enter a first name and last initial. There are no accounts or
+        passwords and nothing to install. Adding a new pilot takes about ten seconds.</li>
+        <li><b>Five simulators, one button each.</b> Each sim launches straight from the home screen.
+        One radio setup screen maps any club transmitter into all five sims, so a student never has to
+        open a game's settings menu.</li>
+        <li><b>Hours are tracked fairly and automatically.</b> The clock starts only once the sim has
+        actually opened, pauses when nobody is touching the sticks, and stops when the pilot leaves.</li>
+        <li><b>Everyone gets a turn.</b> A session clock turns amber at 15 minutes and asks the pilot to
+        hand over. An RGB light ring on the desk shows the same thing, so a pilot can see it with
+        goggles half on.</li>
+        <li><b>It's just a flight lab.</b> The PC is locked down to the kiosk. It opens and closes
+        on the lab's schedule and restarts itself after a crash.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec cols c3">
+    <div class="why"><b>Why it matters</b>Practice hours are what make a pilot, and every login screen or
+    settings menu costs some of them. Because starting takes no effort, students fly between classes.</div>
+    <div class="why"><b>Visible progress</b>Each pilot sees their hours by sim and their next badge.
+    The whole room sees the weekly board. Seeing small gains keeps students coming back.</div>
+    <div class="why"><b>Crashes are free</b>The simulator is where students build muscle memory and make
+    their mistakes. That way the club's real drones are only flown by pilots who have already shown control.</div>
+  </div>
+
+  <div class="sec card" style="padding:.09in .14in">
+    <h3>One pilot record everywhere</h3>
+    <p style="margin:0">Both kiosks sync with each other every minute, and the same record appears on the club website
+    (<b>elmagoct.github.io/brophy-uav-dashboard</b>). There students can check whether the lab is open, see the hours board, and follow
+    the full badge path from any phone. Progress follows the student, not the machine.</p>
+  </div>
+
+  <div class="foot"><span>Brophy UAV Flight Lab</span><span>October 2026 · 1 / 3</span></div>
+</section>
+
+<!-- ============================ PAGE 2 ============================ -->
+<section class="page p2">
+  <h2><span class="n">02</span>Badges: a path with no dead ends</h2>
+  <p>Twenty badges are grouped into four tiers. Each tier ends in a <b>checkpoint</b>, a real flight
+  that unlocks the next, larger aircraft. Before a checkpoint, a student must hold the tier's other badges,
+  so moving up always means being ready to move up. Four bonus badges (Editing, Tuning, Fleet Steward,
+  Mentor) can be earned in any order, so students can grow in other directions too.</p>
+
+  <div class="ladder">
+    <div class="tier" style="--c:var(--sky)"><span class="t">Tier 0</span><span class="nm">Simulator</span>
+      <span class="g">The five FPV sims</span>
+      Sim Flight · Spotter · Safe Flight · Battery Care · Building · Betaflight · Line of Sight
+      <span class="cp"><i>CHECKPOINT</i><br>Tiny Whoop: first real flight</span></div>
+    <div class="tier" style="--c:var(--violet)"><span class="t">Tier 1</span><span class="nm">Tiny Whoop</span>
+      <span class="g">Meteor 75 Pro · sub-250 g</span>
+      Soldering · Electrical Components · Radio Protocol · Field Diagnostics · Freestyle Flight
+      <span class="cp"><i>CHECKPOINT</i><br>Pavo 20 Pro Flight</span></div>
+    <div class="tier" style="--c:var(--rust)"><span class="t">Tier 2</span><span class="nm">Full-size</span>
+      <span class="g">Pavo 20 Pro · Cinebot 35 · 5-inch</span>
+      FAA TRUST · Event Ops · Cinematography · Indoor Proximity · Racing
+      <span class="cp"><i>CHECKPOINT</i><br>Event Pilot: fly at a school event</span></div>
+    <div class="tier" style="--c:var(--green)"><span class="t">Tier 3</span><span class="nm">Event Pilot</span>
+      <span class="g">Any Tier 2 airframe, with a spotter</span>
+      The top of the path. Event Pilots fly at school events and, with the Mentor badge, check others'
+      flights and coach them.
+      <span class="cp"><i>FOUR TRACKS</i><br>Flight · Build &amp; tech · Knowledge &amp; safety · Crew &amp; leadership</span></div>
+  </div>
+
+  <h3>Three ways to earn a badge, matched to what is being learned</h3>
+  <div class="ways">
+    <div class="way"><span class="tag">Quiz</span><h3>Knowledge</h3>
+      Short lessons at the kiosk or on a phone, then a 10-question quiz drawn at random from a pool.
+      A score of 80% earns the badge automatically. Retakes are unlimited and the questions change
+      each time, so students learn the material, not the answer key.</div>
+    <div class="way"><span class="tag">Bench</span><h3>Hands-on builds</h3>
+      A step-by-step checklist the student ticks off at the workbench. It ends with a photo of the finished
+      work, taken on the website. A mentor reviews the photo and passes it or sends it back to be redone.</div>
+    <div class="way"><span class="tag">Witnessed</span><h3>Flying &amp; crew skills</h3>
+      A mentor watches the student do the skill and signs it off against a written standard that everyone
+      can read in advance. Some badges, such as Spotter and Event Ops, need a passed quiz <i>and</i> a sign-off.</div>
+  </div>
+
+  <div class="cols" style="grid-template-columns:1fr 1.02fr;margin-top:.14in;align-items:start">
+    <div>
+      <h3>Built-in learning choices</h3>
+      <ul>
+        <li><b>Simulator before hardware.</b> Students need 5 sim hours before a mentor will judge Sim Flight.
+        The kiosk counts the hours, so the rule enforces itself.</li>
+        <li><b>Spotter comes first.</b> New members help others fly safely before they fly real
+        hardware themselves, so they start out as members of the team.</li>
+        <li><b>Every badge shows a time estimate</b> (20 minutes to about 6 hours), so a student can
+        always choose a next step that fits the time they have.</li>
+        <li><b>Practice that uses the real transmitter.</b> Flight-prep lessons include on-screen stick drills
+        that read the club's radios, the same controls students use in the sims.</li>
+        <li><b>Progress only moves forward.</b> Earned badges, passed quizzes and logged hours survive any
+        curriculum change. Every badge also links to tips and vetted resources.</li>
+      </ul>
+    </div>
+    <figure>
+      <img src="img/pilot-path.jpg" alt="Pilot Path page">
+      <figcaption>Pilot Path on the club website. Each badge card shows how it is earned, its track and a time estimate.
+      Checkpoints list their prerequisites, and each box ticks itself as the student earns the badge.</figcaption>
+    </figure>
+  </div>
+
+  <div class="card sec" style="padding:.08in .14in">
+    <b>Posters on the wall.</b> Four 11×17 trail-map posters above the simulators lay out the same path. Each
+    badge card on them says what to do, how it is checked and why it matters, and a QR code opens the
+    student's live progress. The map, the website and the kiosk all follow one badge list, so they never disagree.
+  </div>
+
+  <div class="foot"><span>Brophy UAV Flight Lab</span><span>October 2026 · 2 / 3</span></div>
+</section>
+
+<!-- ============================ PAGE 3 ============================ -->
+<section class="page">
+  <h2><span class="n">03</span>The admin side: mentors spend their time teaching</h2>
+  <p>The system handles the record-keeping, so the adults and student leaders running the lab can spend
+  their time watching students fly and giving feedback.</p>
+
+  <h3>How a badge gets signed off</h3>
+  <div class="flow">
+    <div><b>Student</b>Sees the next badge on the kiosk or website and reads the standard it will be checked against.</div>
+    <div><b>Practice</b>Lessons, drills and sim hours. Quizzes are scored on the spot.</div>
+    <div><b>Mentor</b>Watches the flight or reviews the bench photo, then taps Pass or Approve.</div>
+    <div><b>Record</b>The badge appears on both kiosks, the website and the poster QR within minutes.</div>
+  </div>
+
+  <div class="cols c2 sec" style="align-items:start">
+    <div class="card">
+      <h3>Instructor console (any browser)</h3>
+      <ul>
+        <li><b>Review photos.</b> Bench submissions wait in a queue. A mentor passes each one or sends it back
+        to be redone.</li>
+        <li><b>Approve a badge.</b> Selecting a pilot loads their whole path. The console warns if a
+        prerequisite is missing, for example if the quiz half of a quiz-and-sign-off badge hasn't been passed. An approval
+        made too early is kept on file and counts once the requirement is met.</li>
+        <li><b>Who holds what.</b> A grid of every pilot and badge, so mentors can see who is ready
+        for a checkpoint.</li>
+        <li><b>Run the room remotely.</b> Leaders can check either kiosk's status, open the lab outside
+        normal hours, send a pilot home, restart a kiosk or publish the website.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Safeguards</h3>
+      <ul>
+        <li><b>Only leaders can award badges.</b> Every console command is signed with the instructor password.
+        The kiosks reject any command that doesn't verify, and the password itself is never stored or sent.</li>
+        <li><b>Students can't change records.</b> Exiting the kiosk or editing a pilot needs the instructor password,
+        and repeated wrong guesses lock it out for longer each time.</li>
+        <li><b>Little personal data is kept.</b> The system stores a first name and last initial only.
+        The public site shows names, hours and badges. Quiz scores, attempts and timings stay private.</li>
+        <li><b>Data survives power cuts.</b> Hours are saved every 30 seconds, and the previous copy is
+        kept for recovery.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 class="sec">Who does what</h3>
+  <table>
+    <tr><th style="width:1.15in">Role</th><th>Responsibilities in the system</th></tr>
+    <tr><td>Student pilot</td><td>Flies, takes lessons and quizzes, submits bench photos, and spots for others from their first week.</td></tr>
+    <tr><td>Mentor</td><td>A Tier 2 pilot with deep knowledge of the FAA rules, approved by an officer. Watches witnessed badges, reviews bench photos, and stays alert for anything unsafe or illegal at the field.</td></tr>
+    <tr><td>Club officers</td><td>Appoint mentors, run the instructor console and keep the lab's hours up to date.</td></tr>
+    <tr><td>School IT</td><td>Has a written handover document covering what the kiosk changes on a school PC, how to exit it and how to remove it.</td></tr>
+  </table>
+
+  <div class="cols c2 sec">
+    <div class="why"><b>Built to last</b>The software runs on the school's existing PCs with nothing to
+    install and no subscription. The badge list lives in one file and is fully documented,
+    so the system won't depend on any one student after they graduate.</div>
+    <div class="why"><b>How the grant fits in</b>The kiosks, lessons and badge path
+    are already running. The grant pays for the real drones the upper tiers are built around,
+    so a student's sim hours lead to real checkpoint flights that a mentor signs off.</div>
+  </div>
+
+  <div class="foot"><span>Brophy UAV Flight Lab</span><span>October 2026 · 3 / 3</span></div>
+</section>
+
+</body>
+</html>
