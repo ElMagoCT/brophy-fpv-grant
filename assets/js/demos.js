@@ -36,7 +36,7 @@
   };
 
   D.liveStats = (function () {
-    var root, url = 'https://elmagoct.github.io/brophy-uav-dashboard/data.json';
+    var root, url = 'https://elmagoct.github.io/brophy-fpv-club/data.json';
     var FALLBACK = { generatedIso: '2026-10-04T17:01:41-07:00', totals: { clubMs: 315020320, pilots: 35, activePilots7: 22, sims: 5 } };
     function hrs(ms) { return Math.floor(ms / 3600000); }
     function render(d, live) {

@@ -100,7 +100,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'As of Oct 4:', r: '87 h 30 m flown · 35 pilots logged · 22 flying this week · 5 simulators. (Live numbers in the web deck.)' }
   ]);
   shot(s, 'kiosk-home.jpg', 5.4, 1.45, 4.1, 1.9, 'kiosk · home screen');
-  shot(s, 'web-home.jpg', 5.4, 3.75, 4.1, 1.3, 'elmagoct.github.io/brophy-uav-dashboard/');
+  shot(s, 'web-home.jpg', 5.4, 3.75, 4.1, 1.3, 'elmagoct.github.io/brophy-fpv-club/');
 }
 /* ================================================================ 3 */
 {
@@ -157,7 +157,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'Official:', r: 'the free FAA TRUST certificate before anyone touches a real drone.' },
     { b: 'Students run every sign-off.', r: 'Nothing here costs the school anything beyond the training fleet.' }
   ]);
-  shot(s, 'web-flightschool.jpg', 5.4, 1.45, 4.1, 3.4, '…/brophy-uav-dashboard/flightschool/');
+  shot(s, 'web-flightschool.jpg', 5.4, 1.45, 4.1, 3.4, '…/brophy-fpv-club/flightschool/');
 }
 /* ================================================================ 7 */
 {
@@ -168,7 +168,7 @@ function placeholder(s, x, y, w, h, label, file) {
     { b: 'Stick drills on the real transmitter:', r: 'hover trainer, orientation recovery, the first flip and roll.' },
     { b: 'Written by students, maintained by students.', r: 'A new member has something to do on day one, with or without a free seat.' }
   ]);
-  shot(s, 'web-groundschool.jpg', 5.4, 1.45, 4.1, 2.1, '…/brophy-uav-dashboard/groundschool/');
+  shot(s, 'web-groundschool.jpg', 5.4, 1.45, 4.1, 2.1, '…/brophy-fpv-club/groundschool/');
   if (img('kiosk-lesson.png')) shot(s, 'kiosk-lesson.png', 5.4, 3.75, 4.1, 1.05, 'kiosk · a lesson open'); else placeholder(s, 5.4, 3.95, 4.1, 1.1, 'A Flight School lesson open on the kiosk', 'kiosk/kiosk-lesson.png');
 }
 /* ================================================================ 8 */
@@ -219,7 +219,7 @@ function placeholder(s, x, y, w, h, label, file) {
   card(s, 6.6, 1.45, 2.9, 2.35, 'the output', 'Footage and moments the school can actually use', '• Best of Brophy: short aerial clips any team or club can use, two showcase films a year\n• A live FPV race at the pep rally, pilot’s-eye view on the scoreboard\n• A recruiting moment: students see FPV before they hear about it');
   s.addText([{ text: 'A model other clubs can copy. ', options: { bold: true } }, { text: 'Badge → gate → gear is not drone-specific. Robotics, shop, A/V: any club with expensive tools and a safety question can run the same system.' }],
     { x: 0.5, y: 4.0, w: 5.6, h: 1.0, fontSize: 12, color: INK, margin: 0, isTextBox: true, valign: 'top' });
-  shot(s, 'web-posters.jpg', 6.6, 3.95, 2.9, 0.95, '…/brophy-uav-dashboard/posters/');
+  shot(s, 'web-posters.jpg', 6.6, 3.95, 2.9, 0.95, '…/brophy-fpv-club/posters/');
 }
 /* ================================================================ 12 */
 {
